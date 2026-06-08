@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario IRPF 2025 — Despacho</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;color:#1a1a1a;background:#f5f5f3}
+.page{max-width:820px;margin:0 auto;padding:24px 20px 60px}
+.hdr{background:#1a1a1a;color:#fff;border-radius:12px;padding:24px 28px;margin-bottom:24px}
+.hdr h1{font-size:20px;font-weight:600;margin-bottom:4px}
+.hdr p{font-size:13px;color:#aaa}
+.prog-wrap{margin-bottom:20px}
+.prog-bar{height:4px;background:#e0e0e0;border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:#1a1a1a;border-radius:2px;transition:width .4s}
+.prog-label{font-size:12px;color:#888;text-align:right;margin-top:4px}
+.banner{background:#fffbeb;border:1px solid #f5c518;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:#7c5e00;line-height:1.6}
+.banner strong{color:#5a4400}
+.ccaa-box{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ccaa-box label{font-size:13px;font-weight:600;white-space:nowrap}
+.ccaa-box select{font-size:14px;padding:7px 12px;border:1px solid #ccc;border-radius:8px;min-width:240px;background:#fafafa}
+.sec{background:#fff;border:1px solid #e0e0e0;border-radius:12px;margin-bottom:14px;overflow:hidden}
+.sec-hdr{padding:14px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;border-bottom:1px solid transparent}
+.sec-hdr:hover{background:#fafafa}
+.sec-hdr.open{border-bottom-color:#e8e8e8}
+.sec-icon{font-size:16px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:#f0f0f0;border-radius:6px;flex-shrink:0}
+.sec-hdr-text{flex:1}.sec-hdr-text{flex:1}.sec-hdr h2{font-size:14px;font-weight:600;margin-bottom:1px}.sec-hdr-sub{font-size:11px;color:#888;line-height:1.4;margin-top:2px;font-weight:400}.sec-hdr-sub{font-size:11px;color:#888;line-height:1.4;margin-top:2px}
+.sec-badge{font-size:11px;padding:2px 8px;border-radius:20px;background:#e8f4fd;color:#1565c0;font-weight:500}
+.sec-badge-new{font-size:11px;padding:2px 8px;border-radius:20px;background:#fff3cd;color:#856404;font-weight:500}
+.chevron{font-size:13px;color:#888;transition:transform .2s;flex-shrink:0}
+.sec-hdr.open .chevron{transform:rotate(180deg)}
+.sec-body{padding:18px;display:none}
+.sec-body.open{display:block}
+.sec-desc{font-size:12px;color:#666;background:#f8f8f8;border-radius:8px;padding:10px 14px;margin-bottom:16px;line-height:1.6;border-left:3px solid #e0e0e0}
+.despacho-note{background:#f0f7ff;border:1px solid #b3d4f5;border-radius:8px;padding:14px 16px;margin-bottom:16px;display:flex;gap:10px}
+.dn-icon{font-size:20px;flex-shrink:0}
+.dn-title{font-size:13px;font-weight:600;margin-bottom:4px;color:#1565c0}
+.dn-text{font-size:12px;color:#555;line-height:1.6}
+.subsec{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px}
+.ci{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border:1px solid #e8e8e8;border-radius:8px;cursor:pointer;transition:all .12s}
+.ci:hover{border-color:#bbb;background:#fafafa}
+.ci.checked{border-color:#1a1a1a;background:#eef5ee}
+.ci.checked .ci-check{background:#1a1a1a;border-color:#1a1a1a}
+.ci.checked .ci-check::after{display:block}
+.ci-check{width:16px;height:16px;border:2px solid #ccc;border-radius:4px;flex-shrink:0;margin-top:2px;background:#fff;position:relative;transition:all .15s}
+.ci-check::after{content:'';display:none;position:absolute;left:4px;top:1px;width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg)}
+.ci input{margin-top:3px;flex-shrink:0;width:14px;height:14px;cursor:pointer}
+.ci-text{flex:1}
+.ci label{font-size:13px;cursor:pointer;line-height:1.4;display:block;font-weight:500}
+.ci .hint{font-size:11px;color:#777;margin-top:3px;line-height:1.5}
+.ci.checked .hint{color:#555}
+.ci .amount{display:inline-block;font-size:11px;font-weight:600;color:#1a5c1a;background:#eafbea;padding:1px 6px;border-radius:4px;margin-top:3px}
+.new-tag{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;background:#fff3cd;color:#856404;font-weight:600;margin-left:4px;vertical-align:middle}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.ri{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #e0e0e0;border-radius:20px;cursor:pointer;font-size:13px;transition:all .12s}
+.ri:hover{border-color:#999}
+.ri.sel{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
+.ri input{display:none}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.two-col label{font-size:12px;color:#666;display:block;margin-bottom:4px}
+.two-col input{width:100%;padding:7px 10px;border:1px solid #ddd;border-radius:7px;font-size:13px}
+textarea{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:7px;font-size:13px;min-height:70px;resize:vertical;margin-top:10px}
+.ccaa-placeholder{font-size:13px;color:#888;padding:16px 0;text-align:center}
+.actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn-main{padding:11px 24px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-main:hover{background:#333}
+.btn-sec{padding:11px 20px;background:#fff;border:1px solid #ccc;border-radius:8px;font-size:14px;cursor:pointer;color:#333}
+.btn-sec:hover{background:#f5f5f5}
+.sum-box{margin-top:24px;background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:24px;display:none}
+.sum-box h2{font-size:16px;font-weight:600;margin-bottom:16px}
+.sum-sec{margin-bottom:14px}
+.sum-sec h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-bottom:6px}
+.sum-item{font-size:13px;padding:4px 0;border-bottom:1px solid #f0f0f0}
+.sum-item:last-child{border:none}
+.sum-footer{font-size:12px;color:#999;margin-top:14px}
+@media(max-width:600px){.cg{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}}
+@media print{body{background:#fff}.btn-main,.btn-sec{display:none}.sec-body{display:block!important}}
+
+  /* BEREADY BRANDING */
+  .hdr {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(13,27,75,0.07);
+  }
+  .hdr-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 2px solid #0d1b4b;
+  }
+  .hdr-logo { height: 76px; width: auto; max-width: 320px; object-fit: contain; }
+  .hdr-copy { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+  .hdr-copy span { font-size: 10px; color: #999; letter-spacing: .02em; }
+  .hdr-divider { display: none; }
+  .hdr h1 { font-size: 18px; font-weight: 700; padding: 16px 24px 3px; color: #0d1b4b; }
+  .hdr p { font-size: 12px; color: #888; padding: 0 24px 16px; }
+  
+  /* FOOTER BEREADY */
+  .br-footer { margin-top: 32px; border-top: 1px solid #e0e0e0; padding-top: 20px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+  .br-footer-logo img { height: 28px; width: auto; max-width: 120px; object-fit: contain; opacity: .6; }
+  .br-footer-info { font-size: 11px; color: #999; line-height: 1.8; text-align: right; }
+  .br-footer-info a { color: #0d1b4b; text-decoration: none; }
+  .br-watermark { text-align: center; margin-top: 16px; font-size: 10px; color: #ccc; letter-spacing: .04em; }
+
+  /* BADGE top corner */
+  .br-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: #0d1b4b; background: #eef1fa; border: 1.5px solid #0d1b4b; border-radius: 4px; padding: 3px 9px; margin-left: 8px; vertical-align: middle; letter-spacing: .04em; }
+
+  @media(max-width:600px){ .hdr-copy { display: none; } .br-footer-info { text-align: left; } }
+  @media print {
+    .br-footer { display: flex !important; }
+    .hdr-copy { display: flex !important; }
+  }
+
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    
+    body { background: #fff !important; font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    
+    /* Header compacto */
+    .hdr { box-shadow: none !important; border: 1px solid #ddd !important; margin-bottom: 10px; }
+    .hdr-top { padding: 10px 16px 8px; }
+    .hdr-logo { height: 28px !important; }
+    .hdr h1 { font-size: 14px; padding: 8px 16px 2px; }
+    .hdr p { font-size: 10px; padding: 0 16px 10px; }
+    
+    /* Ocultar elementos no útiles en impresión */
+    .prog-wrap, .banner, .ccaa-box, .actions, .sum-box, .br-watermark { display: none !important; }
+    
+    /* Secciones: sin sombras, sin bordes redondeados exagerados */
+    .sec { border: 1px solid #ccc !important; border-radius: 4px !important; 
+           margin-bottom: 8px !important; box-shadow: none !important;
+           page-break-inside: avoid !important; break-inside: avoid !important; }
+    
+    /* Cabecera de sección siempre visible */
+    .sec-hdr { padding: 8px 12px !important; border-bottom: 1px solid #eee !important; }
+    .sec-hdr h2 { font-size: 12px !important; }
+    .sec-hdr-sub { font-size: 10px !important; color: #666 !important; }
+    .chevron { display: none !important; }
+    
+    /* Mostrar TODOS los cuerpos aunque estén cerrados */
+    .sec-body { display: block !important; padding: 10px 12px !important; }
+    .sec-desc { font-size: 10px !important; padding: 6px 10px !important; margin-bottom: 8px !important; }
+    
+    /* Nota despacho */
+    .despacho-note { padding: 8px 10px !important; margin-bottom: 8px !important; }
+    .dn-title { font-size: 11px !important; }
+    .dn-text { font-size: 10px !important; }
+    
+    /* Grid de checkboxes: 2 columnas en impresión */
+    .cg { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 4px !important; }
+    
+    /* Checkbox items */
+    .ci { padding: 5px 7px !important; border: 1px solid #ddd !important; 
+          border-radius: 4px !important; page-break-inside: avoid !important;
+          break-inside: avoid !important; min-height: 0 !important; }
+    .ci.checked { background: #eef5ee !important; border-color: #1a1a1a !important; }
+    .ci label { font-size: 10px !important; font-weight: 600; }
+    .ci .hint { font-size: 9px !important; color: #666 !important; }
+    .ci .amount { font-size: 9px !important; }
+    
+    /* TICK VISUAL EN IMPRESIÓN — reemplaza el cuadrado vacío */
+    .ci-check { 
+      width: 13px !important; height: 13px !important; 
+      border: 1.5px solid #bbb !important; border-radius: 3px !important;
+      background: #fff !important; position: relative !important;
+      flex-shrink: 0 !important; margin-top: 1px !important;
+      display: inline-block !important;
+    }
+    .ci.checked .ci-check { 
+      background: #1a1a1a !important; border-color: #1a1a1a !important; 
+    }
+    .ci.checked .ci-check::after { 
+      content: '' !important; display: block !important;
+      position: absolute !important; left: 3px !important; top: 0px !important;
+      width: 4px !important; height: 8px !important;
+      border: 2px solid #fff !important; border-top: none !important; border-left: none !important;
+      transform: rotate(45deg) !important;
+    }
+
+    /* Subsección títulos */
+    .subsec { font-size: 9px !important; margin: 8px 0 4px !important; }
+    
+    /* Radios */
+    .radio-row { gap: 4px !important; margin-bottom: 6px !important; }
+    .ri { padding: 3px 8px !important; font-size: 10px !important; border-radius: 12px !important; }
+    .ri.sel { background: #1a1a1a !important; color: #fff !important; }
+    
+    /* Inputs numéricos y texto */
+    .two-col { gap: 6px !important; margin-top: 6px !important; }
+    .two-col label { font-size: 9px !important; }
+    .two-col input { padding: 4px 6px !important; font-size: 10px !important; border: 1px solid #ccc !important; }
+    
+    /* Textarea — mostrar el contenido escrito, no el placeholder */
+    textarea { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+      font-size: 10px !important; 
+      min-height: 40px !important; 
+      border: 1px solid #ddd !important; 
+      border-radius: 4px !important;
+      padding: 5px 7px !important;
+      margin-top: 6px !important;
+      background: #fafafa !important;
+      color: #333 !important;
+      resize: none !important;
+      width: 100% !important;
+    }
+    
+    /* Footer BeReady */
+    .br-footer { 
+      display: flex !important; margin-top: 12px !important; 
+      padding-top: 10px !important; border-top: 1px solid #ddd !important;
+    }
+    .br-footer-logo img { height: 20px !important; }
+    .br-footer-info { font-size: 9px !important; }
+    
+    /* Badges */
+    .sec-badge, .sec-badge-new, .br-badge { font-size: 8px !important; padding: 1px 5px !important; }
+    .new-tag { font-size: 8px !important; }
+
+    /* Saltos de página inteligentes */
+    .sec { page-break-inside: avoid !important; }
+    h2, .sec-hdr { page-break-after: avoid !important; }
+    .ci { page-break-inside: avoid !important; }
+    
+    /* Nota informativa despacho en sección 3 */
+    .despacho-note { page-break-inside: avoid !important; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+<div class="hdr">
+  <div class="hdr-top">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAJZBE0DASIAAhEBAxEB/8QAHQABAQEBAQEBAQEBAAAAAAAAAAgJBwYFAwQCAf/EAFYQAQAABAMDBQoHCgwGAgMBAAABAgMEBQYHERjTCBIhVpUTMTdBUVVhdZOUFBYicXSz0gkVMldygYKRsbIXIzY4QkNSYnOhorQzVHaSwdElUyREwjT/xAAaAQEAAgMBAAAAAAAAAAAAAAAAAwYBAgQF/8QANhEBAAECAwYEBQQCAgIDAAAAAAECAwQRUQUSExUxUhQhcZEyNEGh0TNhgcGS4SKxQvAjJPH/2gAMAwEAAhEDEQA/ALLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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QMgAAAJT5QXJwzzqBqviua8FxPL1CxvJKEKcl3cVpasOZRkkjthLSmh35Y+PvPA7nupvnrKXvdxwF1D0aNqX6KYpjLKP2aTbiUK7nupvnrKXvdxwDc91N89ZS97uOAuobc3xOsezHDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHSjnS3kt6g5W1Gy/mPEMWyzUtMNxClc1pKFzXjUmlkmhGMJYRowhGPzxgsYHJiMTcxExNf0bU0xT0AHO2AAAAZU6jeELMnra6+tmW3yEfAVD1rcfskRJqN4Qsyetrr62ZbfIR8BUPWtx+yRZtqfKx/CC38TvYCspwAHzsewHBMftJrTHMIsMTt5oRhGnd28tWXZH0TQimbXfkrYZcYfcY7pnJNZ3lKSM9TCJ54z06+zpj3KaaMYyzeSWMYyx6IQ5vjqodFjFXbFWdE/hiaYnqyPnluLO7mknlq29xQn2TSxhGWenPLHveWEYRg0C5IeqlXUPIk+G41dd2zDg3NpXM88flXFGP8Aw6vpj0Rlm9MNsfwnAuXdki2y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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="BeReady" class="hdr-logo">
+    <div class="hdr-copy">
+      <span>© 2025 BeReady®. Todos los derechos reservados.</span>
+      <span>Documento de uso exclusivo para clientes de BeReady</span>
+    </div>
+  </div>
+  <div class="hdr-divider"></div>
+  <h1>Cuestionario de datos — IRPF 2025 <span class="br-badge">BeReady®</span></h1>
+  <p>Renta que se presenta en 2026 · Basado en el Manual Práctico AEAT Renta 2025 (634 páginas)</p>
+</div>
+<div class="prog-wrap">
+  <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+  <div class="prog-label" id="prog-label">0% completado</div>
+</div>
+<div class="banner">
+  <strong>Novedades IRPF 2025:</strong> Nueva deducción rendimientos trabajo &lt;18.276€ · Umbral 2º pagador sube a 2.500€ · Reducción 30% rendimientos artísticos plurianuales · Nuevas casillas regularización cuotas SS autónomos · Deducciones veterinarias nuevas en Andalucía y Murcia · Ampliación "Renta Directa"
+</div>
+<div class="ccaa-box">
+  <label for="ccaa">Comunidad autónoma de residencia fiscal en 2025:</label>
+  <select id="ccaa" onchange="cambiarCCAA()">
+    <option value="">— Selecciona tu comunidad —</option>
+    <option value="and">Andalucía</option>
+    <option value="ara">Aragón</option>
+    <option value="ast">Principado de Asturias</option>
+    <option value="bal">Illes Balears</option>
+    <option value="can">Canarias</option>
+    <option value="cant">Cantabria</option>
+    <option value="clm">Castilla-La Mancha</option>
+    <option value="cyl">Castilla y León</option>
+    <option value="cat">Cataluña</option>
+    <option value="ext">Extremadura</option>
+    <option value="gal">Galicia</option>
+    <option value="mad">Comunidad de Madrid</option>
+    <option value="mur">Región de Murcia</option>
+    <option value="rio">La Rioja</option>
+    <option value="val">Comunitat Valenciana</option>
+    <option value="nav">Navarra (régimen foral)</option>
+    <option value="pv">País Vasco (régimen foral)</option>
+  </select>
+</div>
+
+
+<!-- 1. DATOS PERSONALES -->
+<div class="sec"><div class="sec-hdr open" onclick="tog('personal')"><div class="sec-icon">👤</div><div class="sec-hdr-text"><h2>1. Datos personales y situación familiar</h2><div class="sec-hdr-sub">Nombre, estado civil, hijos y familiares a cargo. Determina los mínimos que reducen tu base imponible.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body open" id="body-personal">
+<div class="sec-desc">Datos identificativos y situación a 31/12/2025. El estado civil y los familiares a cargo determinan los mínimos personales y familiares que reducen la base imponible antes de calcular el impuesto.</div>
+<div class="two-col">
+<div><label>Nombre y apellidos</label><input type="text" id="nombre" oninput="updProg()"></div>
+<div><label>NIF / NIE</label><input type="text" id="nif" oninput="updProg()"></div>
+<div><label>Municipio de residencia</label><input type="text" oninput="updProg()"></div>
+<div><label>Ejercicio</label><input type="text" value="2025" oninput="updProg()"></div>
+</div>
+<div class="subsec" style="margin-top:16px">Estado civil a 31/12/2025</div>
+<div class="radio-row" id="rg-civil">
+<div class="ri" onclick="selR('rg-civil',this)"><input type="radio">Soltero/a</div>
+<div class="ri" onclick="selR('rg-civil',this)"><input type="radio">Casado/a</div>
+<div class="ri" onclick="selR('rg-civil',this)"><input type="radio">Pareja de hecho</div>
+<div class="ri" onclick="selR('rg-civil',this)"><input type="radio">Divorciado/a</div>
+<div class="ri" onclick="selR('rg-civil',this)"><input type="radio">Viudo/a</div>
+</div>
+<div class="subsec">Modalidad de declaración</div>
+<div class="radio-row" id="rg-mod">
+<div class="ri" onclick="selR('rg-mod',this)"><input type="radio">Individual</div>
+<div class="ri" onclick="selR('rg-mod',this)"><input type="radio">Conjunta (matrimonio/pareja de hecho)</div>
+</div>
+<div class="subsec">Circunstancias personales</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Discapacidad ≥33% (titular)</label><div class="hint">Mínimo adicional de 3.000€/año en la base imponible</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Discapacidad ≥65% (titular)</label><div class="hint">Mínimo adicional de 9.000€/año. Con ayuda de terceros: +3.000€ adicionales</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Discapacidad del cónyuge/pareja</label><div class="hint">Puede generar deducciones estatales y autonómicas adicionales</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Familia numerosa general (3+ hijos)</label><div class="hint">Deducción estatal hasta 1.200€/año en cuota. Posibles deducciones autonómicas adicionales</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Familia numerosa especial (5+ hijos)</label><div class="hint">Deducción estatal hasta 2.400€/año en cuota</div></div></div>
+</div>
+<div class="subsec">Descendientes / ascendientes a cargo</div>
+<div class="two-col">
+<div><label>Hijos menores de 25 años a cargo</label><input type="number" min="0" placeholder="0" oninput="updProg()"></div>
+<div><label>De esos, menores de 3 años</label><input type="number" min="0" placeholder="0" oninput="updProg()"></div>
+<div><label>Ascendientes &gt;65 años a cargo (conviven)</label><input type="number" min="0" placeholder="0" oninput="updProg()"></div>
+<div><label>Ascendientes &gt;75 años a cargo</label><input type="number" min="0" placeholder="0" oninput="updProg()"></div>
+</div>
+</div></div>
+
+<!-- 2. TRABAJO -->
+<div class="sec"><div class="sec-hdr" onclick="tog('trab')"><div class="sec-icon">💼</div><div class="sec-hdr-text"><h2>2. Rendimientos del trabajo</h2><div class="sec-hdr-sub">Nóminas, pensiones, paro (SEPE). Si eres empleado por cuenta ajena o percibes una pensión, esta sección te aplica.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-trab">
+<div class="sec-desc">Ingresos por relación laboral o estatutaria: nóminas, pensiones, SEPE. Tributan en la base general del IRPF según los tramos progresivos. La ley prevé reducciones específicas para rentas bajas (art. 20 LIRPF).</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Nómina (trabajo por cuenta ajena)</label><div class="hint">Aportar certificado de retenciones de la empresa. Aparece en datos fiscales AEAT</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Pensión pública (jubilación/incapacidad)</label><div class="hint">La SS emite certificado de retenciones anual. Tributa como rendimiento del trabajo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Prestación desempleo (SEPE)</label><div class="hint">Sujeta a retención. El SEPE emite certificado anual</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Seguro médico pagado por la empresa</label><div class="hint">Exento hasta 500€/persona cubierta (1.500€ si discapacidad). No tributa dentro del límite</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Otras retribuciones en especie (coche, etc.)</label><div class="hint">Se valoran según reglas LIRPF y aparecen en el certificado de retenciones</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Indemnización por despido</label><div class="hint">Exenta hasta 180.000€. El exceso tributa como rendimiento del trabajo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Rendimientos plurianuales (&gt;2 años)</label><div class="hint">Reducción del 30% sobre el rendimiento íntegro (art. 18.2 LIRPF)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Stock options / opciones sobre acciones</label><div class="hint">Tributación especial. Consultar si aplica exención parcial según los plazos</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Más de un pagador en 2025 <span class="new-tag">NOV</span></label><div class="hint">Umbral del 2º pagador sube a 2.500€ en 2025 (antes 1.500€). Afecta a la obligación de declarar</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Rentas íntegras del trabajo &lt;18.276€ <span class="new-tag">NOV</span></label><div class="hint">Nueva deducción en cuota: hasta 340€ si rentas &lt;16.576€, decreciente hasta 18.276€. Sin otras rentas &gt;6.500€</div></div></div>
+</div>
+<div class="subsec">Gastos deducibles del trabajo</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Cuotas sindicales</label><div class="hint">100% deducibles del rendimiento íntegro. Requiere justificante de pago</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Colegio profesional (cuota obligatoria)</label><div class="hint">Solo la parte obligatoria para ejercer la profesión, hasta 500€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Defensa jurídica frente al empleador</label><div class="hint">Hasta 300€/año (art. 19.2.e LIRPF)</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Cuál fue tu bruto anual aproximado? Lo encontrarás en tu última nómina de diciembre o en el certificado de retenciones. ¿Tuviste ERE, despido, baja larga o más de un pagador?"></textarea>
+</div></div>
+
+<!-- 3. ACTIVIDADES ECONÓMICAS -->
+<div class="sec"><div class="sec-hdr" onclick="tog('ae')"><div class="sec-icon">🏪</div><div class="sec-hdr-text"><h2>3. Rendimientos de actividades económicas</h2><div class="sec-hdr-sub">Solo si eres autónomo o tienes actividad empresarial propia. El despacho gestiona los datos contables; aquí solo te preguntamos conceptos extra.</div></div><span class="sec-badge">Autónomo / Empresario</span><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-ae">
+<div class="despacho-note"><div class="dn-icon">ℹ️</div><div><div class="dn-title">Esta sección la gestiona el despacho</div><div class="dn-text">Los datos de ingresos, gastos y resultado de la actividad los obtenemos de la <strong>cuenta de pérdidas y ganancias</strong> y del <strong>balance</strong> que nos facilita el/la gestor/a. No es necesario que cumplimentéis esta parte.<br><br>Sí que os pedimos que respondáis las preguntas de abajo, sobre conceptos que el art. 30 LIRPF permite deducir pero que no siempre figuran en la contabilidad habitual.</div></div></div>
+<div class="subsec">Régimen de estimación (solo informativo)</div>
+<div class="radio-row" id="rg-ae">
+<div class="ri" onclick="selR('rg-ae',this)"><input type="radio">Directa normal</div>
+<div class="ri" onclick="selR('rg-ae',this)"><input type="radio">Directa simplificada</div>
+<div class="ri" onclick="selR('rg-ae',this)"><input type="radio">Módulos (objetiva)</div>
+<div class="ri" onclick="selR('rg-ae',this)"><input type="radio">No lo sé</div>
+</div>
+<div class="subsec">Conceptos que sí debéis informarnos — Art. 30 LIRPF</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Tengo seguro médico privado (titular)</label><div class="hint">Gasto deducible hasta 500€/año. Solo en estimación directa (art. 30.2.5ª.a LIRPF). Aportar recibo de prima</div><div class="amount">Máx. 500€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>El seguro cubre al cónyuge/pareja</label><div class="hint">500€ adicionales deducibles. El cónyuge debe figurar en la póliza</div><div class="amount">+500€</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>El seguro cubre a hijos &lt;25 años</label><div class="hint">500€ adicionales por cada hijo (1.500€ si tienen discapacidad reconocida)</div><div class="amount">+500€/hijo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Comidas de negocio sin pernoctar</label><div class="hint">Hasta 26,67€/día en España. Pago obligatorio con tarjeta y factura. No valen comidas habituales sin desplazamiento (art. 30.2.5ª.c LIRPF)</div><div class="amount">Máx. 26,67€/día</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Gastos de estancia con pernoctación</label><div class="hint">Hasta 53,34€/día en España (91,35€/día extranjero). Requiere factura de hotel y restaurante</div><div class="amount">Máx. 53,34€/día</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Mutualidad alternativa a la SS</label><div class="hint">Para profesionales con mutualidad obligatoria del colegio como alternativa al RETA (abogados, médicos...)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Inicio de actividad en 2025</label><div class="hint">Reducción del 20% sobre el rendimiento neto positivo en los 2 primeros ejercicios con resultado positivo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Cese o venta de la actividad en 2025</label><div class="hint">Puede generar ganancias patrimoniales por venta de elementos afectos o del fondo de comercio</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Regularización cuota SS (ingresos reales) <span class="new-tag">NOV</span></label><div class="hint">Nuevo 2025: si la TGSS realizó ajuste de cuotas por el sistema de cotización real, informar el importe. Nuevas casillas en la declaración</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Rendimientos artísticos/científicos plurianuales <span class="new-tag">NOV</span></label><div class="hint">Nuevo 2025: reducción del 30% si se han generado en más de 2 años. Límite máximo: 150.000€</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Tienes seguro médico privado? ¿A cuánto asciende la prima y quién está cubierto? ¿Haces comidas o desplazamientos de trabajo con factura? ¿Algún cambio en tu actividad en 2025?"></textarea>
+</div></div>
+
+<!-- 4. CAPITAL INMOBILIARIO -->
+<div class="sec"><div class="sec-hdr" onclick="tog('ci')"><div class="sec-icon">🏠</div><div class="sec-hdr-text"><h2>4. Rendimientos del capital inmobiliario</h2><div class="sec-hdr-sub">Si tienes pisos, locales o garajes alquilados, o inmuebles vacíos. También si algún inmueble está a tu disposición sin alquilar.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-ci">
+<div class="sec-desc">Alquileres de inmuebles que no sean actividad económica. Tributan en la base general. Los pisos en alquiler de vivienda habitual del inquilino tienen una reducción del 60% sobre el rendimiento neto. Los inmuebles vacíos generan una renta imputada del 1,1% o 2% del valor catastral.</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Alquiler de vivienda habitual del inquilino</label><div class="hint">Reducción del 60% sobre el rendimiento neto. Contratos post 26/05/2023 sujetos a la Ley de Vivienda</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Alquiler turístico/vacacional (Airbnb...)</label><div class="hint">Sin reducción del 60%. Tributa íntegramente. Puede haber IVA si se prestan servicios hoteleros</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Alquiler de local comercial</label><div class="hint">Sin reducción. El arrendatario practica retención del 19%</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Alquiler de garaje/trastero</label><div class="hint">Sin reducción. El rendimiento neto tributa íntegramente en base general</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Inmueble vacío a disposición del titular</label><div class="hint">Renta imputada: 1,1% del valor catastral revisado. 2% si no revisado desde 01/01/1994. Aunque no alquiles, debes declararlo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Inmueble cedido a familiar sin contrato</label><div class="hint">Se valora a precio de mercado aunque no haya alquiler efectivo. Genera renta imputada</div></div></div>
+</div>
+<div class="subsec">Gastos deducibles del arrendamiento (marcar si los tienes)</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Hipoteca del inmueble alquilado (intereses)</label><div class="hint">Solo los intereses son deducibles, no la amortización del capital. Límite: el rendimiento íntegro del alquiler</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>IBI y tasas municipales</label><div class="hint">100% deducible si alquilado todo el año; proporcional al tiempo alquilado si solo parte del año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Seguro del inmueble</label><div class="hint">Multirriesgo/hogar. 100% si alquilado todo el año; proporcional si solo parte</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Cuotas de comunidad de propietarios</label><div class="hint">Deducibles si las paga el propietario (no el inquilino)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Reparaciones y conservación</label><div class="hint">Solo obras de mantenimiento. Las mejoras del inmueble se amortizan (3%/año), no se deducen directamente</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Cuánto cobras al mes de alquiler? ¿Tienes hipoteca, IBI u otros gastos sobre el inmueble? ¿Vendiste algún inmueble en 2025? Cuéntanos lo que puedas."></textarea>
+</div></div>
+
+<!-- 5. CAPITAL MOBILIARIO -->
+<div class="sec"><div class="sec-hdr" onclick="tog('cm')"><div class="sec-icon">📈</div><div class="sec-hdr-text"><h2>5. Rendimientos del capital mobiliario</h2><div class="sec-hdr-sub">Dividendos de acciones, intereses de depósitos y bonos, seguros de ahorro. Ingresos de tus inversiones financieras.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-cm">
+<div class="sec-desc">Rendimientos de inversiones financieras. Van a la base del ahorro y tributan al tipo fijo de la escala del ahorro (19%–28% en 2025 según tramos). El banco/broker suele practicar retención del 19% en origen.</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Dividendos de acciones</label><div class="hint">Retención del 19% en origen. Tributan íntegramente en base del ahorro. El banco certifica anualmente</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Intereses de cuentas y depósitos bancarios</label><div class="hint">Retención del 19%. Aparecen en el certificado fiscal del banco</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Intereses de bonos/obligaciones</label><div class="hint">Retención del 19%. Si son Letras del Tesoro, aparecen directamente en datos fiscales AEAT</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Rendimiento de seguros de ahorro/vida</label><div class="hint">Solo la rentabilidad tributa, no el capital aportado. La aseguradora certifica el rendimiento</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Dividendos de sociedad propia (SL)</label><div class="hint">Tributan en base del ahorro. Retención del 19%. Riesgo de regularización si la sociedad es patrimonial</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Royalties/propiedades intelectuales (cedidas a terceros)</label><div class="hint">Si se transmiten a terceros, son capital mobiliario. Si el propio autor las percibe directamente, son rendimientos del trabajo</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Tienes certificados bancarios con intereses o dividendos? Indícanos el banco y el importe aproximado si lo recuerdas."></textarea>
+</div></div>
+
+<!-- 6. GANANCIAS PATRIMONIALES -->
+<div class="sec"><div class="sec-hdr" onclick="tog('gp')"><div class="sec-icon">🔄</div><div class="sec-hdr-text"><h2>6. Ganancias y pérdidas patrimoniales</h2><div class="sec-hdr-sub">Si has vendido un piso, acciones, fondos o criptomonedas, o has recibido un premio. También si tuviste pérdidas que compensar.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-gp">
+<div class="sec-desc">Variaciones de valor del patrimonio: ventas de inmuebles, acciones, fondos, criptos, premios... Más de 1 año → base del ahorro (19%–28%). Menos de 1 año → base general. Las pérdidas pueden compensarse con otras ganancias en los 4 años siguientes.</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Venta de inmueble (piso, local, terreno)</label><div class="hint">Ganancia = precio venta – precio compra – gastos. Posible exención por reinversión en vivienda habitual</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Venta de acciones / ETFs</label><div class="hint">Plusvalía en base del ahorro. Las pérdidas compensan ganancias y hasta el 25% de rendimientos del capital mobiliario</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Reembolso de fondos de inversión</label><div class="hint">Los traspasos entre fondos están exentos (diferimiento fiscal). Solo tributa al reembolso final en dinero</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Venta/intercambio de criptomonedas</label><div class="hint">Cada venta, canje o pago con cripto genera ganancia o pérdida. Modelo 721 si saldos en el extranjero &gt;50.000€</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Venta de participaciones en SL/SA</label><div class="hint">Ganancia = precio venta – valor fiscal adquisición. Posibles reglas especiales si es empresa familiar</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Premios (loterías, concursos, apuestas)</label><div class="hint">Lotería Nacional/ONCE: exentos hasta 40.000€; exceso al 20%. Otros premios tributan al tipo marginal</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Exención por reinversión en vivienda habitual</label><div class="hint">La ganancia queda exenta si se reinvierte en nueva VH en 2 años. Hay que comunicarlo a la AEAT</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Exención mayores de 65 años (vivienda habitual)</label><div class="hint">La ganancia por venta de VH está exenta. Otras ganancias también si se reinvierten en renta vitalicia (máx. 240.000€)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Pérdidas patrimoniales de años anteriores pendientes</label><div class="hint">Compensables durante los 4 ejercicios siguientes. Verificar declaración anterior</div></div></div>
+</div>
+<textarea placeholder="📝 Si vendiste algo en 2025 (piso, acciones, criptomonedas...), cuéntanos qué, cuándo y por cuánto. También necesitaremos saber cuándo y por cuánto lo compraste."></textarea>
+</div></div>
+
+<!-- 7. REDUCCIONES -->
+<div class="sec"><div class="sec-hdr" onclick="tog('red')"><div class="sec-icon">📉</div><div class="sec-hdr-text"><h2>7. Reducciones de la base imponible</h2><div class="sec-hdr-sub">Aportaciones a planes de pensiones, pensión compensatoria al ex-cónyuge. Restan directamente de la base antes de calcular el impuesto.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-red">
+<div class="sec-desc">Las reducciones minoran directamente la base imponible antes de aplicar los tipos del IRPF. Son más ventajosas cuanto más alto sea el tipo marginal (especialmente si superas el 30%).</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Plan de pensiones individual</label><div class="hint">Límite 2025: el menor de 1.500€/año o el 30% de los rendimientos netos del trabajo y AE. Se rescata tributando como rendimiento del trabajo</div><div class="amount">Máx. 1.500€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Plan de pensiones de empleo (aportación empresa)</label><div class="hint">Límite adicional: hasta 8.500€/año más si los aporta la empresa. Total máximo posible: 10.000€/año</div><div class="amount">+8.500€/año empresa</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Plan de pensiones simplificado de autónomos</label><div class="hint">Límite adicional de 4.250€/año desde 2023. Total posible autónomo: 1.500€ + 4.250€ = 5.750€/año</div><div class="amount">+4.250€/año autónomo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Aportación a mutualidad profesional</label><div class="hint">Mismo límite que el plan de pensiones individual. Solo para colegios profesionales con mutualidad reconocida</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Pensión compensatoria pagada al ex-cónyuge</label><div class="hint">Reduce la base general del pagador. El perceptor la declara como rendimiento del trabajo</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Anualidades por alimentos a hijos (convenio judicial)</label><div class="hint">Tributación especial: se aplica la tarifa por separado sobre la parte de alimentos</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Cuánto aportaste a tu plan de pensiones en 2025? ¿Pagas pensión compensatoria al ex-cónyuge? Con estos datos calculamos exactamente cuánto te ahorras."></textarea>
+</div></div>
+
+<!-- 8. DEDUCCIONES ESTATALES -->
+<div class="sec"><div class="sec-hdr" onclick="tog('dest')"><div class="sec-icon">🇪🇸</div><div class="sec-hdr-text"><h2>8. Deducciones de la cuota estatal</h2><div class="sec-hdr-sub">Donativos a ONGs, maternidad, familia numerosa, hipoteca pre-2013. Iguales para todos los contribuyentes de España.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-dest">
+<div class="sec-desc">Se restan directamente de la cuota íntegra estatal. Son iguales para todos los contribuyentes de España. Se aplican después de calcular los mínimos personal y familiar.</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Donativos a ONGs / Ley 49/2002</label><div class="hint">Primeros 250€: 80% de deducción. Resto: 40% (45% si repites ≥2 años consecutivos). Cruz Roja, Cáritas, ONCE, universidades públicas, etc.</div><div class="amount">80% hasta 250€, 40% resto</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Deducción por maternidad</label><div class="hint">Hasta 1.200€/año por hijo menor de 3 años para madres trabajadoras. +1.000€ adicionales si se ha pagado guardería autorizada</div><div class="amount">Hasta 2.200€/hijo &lt;3 años</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Deducción por familia numerosa (estatal)</label><div class="hint">General: 1.200€/año. Especial: 2.400€/año. +600€/año por cada hijo que supere el mínimo de la categoría. Puede cobrarse anticipadamente</div><div class="amount">1.200€ / 2.400€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Cónyuge/pareja con discapacidad ≥33%</label><div class="hint">Hasta 1.200€/año si el cónyuge tiene discapacidad y sus rentas propias no superan 8.000€/año</div><div class="amount">Hasta 1.200€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Contribuyente monoparental con 2+ hijos</label><div class="hint">1.200€/año si es el único progenitor conviviendo con 2 o más descendientes. Incompatible con percibir pensión compensatoria del ex-cónyuge</div><div class="amount">1.200€/año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Impuesto pagado en el extranjero (doble imposición)</label><div class="hint">El menor de: impuesto pagado en el extranjero o la cuota española correspondiente a esa renta extranjera</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Inversión en VH — régimen transitorio (hipoteca pre-2013)</label><div class="hint">Solo hipotecas anteriores al 01/01/2013. Deducción estatal: 7,5% de lo pagado (capital + intereses), base máx. 9.040€/año</div><div class="amount">7,5% s/máx. 9.040€</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Donativos a alguna ONG en 2025? Indícanos cuál y el importe. ¿Hipoteca anterior a enero de 2013? Anótanos el importe pagado este año. Cualquier otra deducción, coméntanosla."></textarea>
+</div></div>
+
+<!-- 9. DEDUCCIONES AUTONÓMICAS -->
+<div class="sec"><div class="sec-hdr" onclick="tog('daut')"><div class="sec-icon">🏛️</div><div class="sec-hdr-text"><h2>9. Deducciones autonómicas</h2><div class="sec-hdr-sub">Cada comunidad autónoma tiene sus propias deducciones: alquiler, hijos, veterinarios, energía renovable... Selecciona tu CCAA arriba para verlas.</div></div><span class="sec-badge-new" id="ccaa-badge">Selecciona tu CCAA arriba</span><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-daut">
+<div class="sec-desc">Las deducciones autonómicas se restan de la cuota íntegra autonómica (el 50% del IRPF). Cada comunidad aprueba las suyas. <strong>Selecciona tu comunidad autónoma en la parte superior</strong> para ver las deducciones específicas actualizadas para 2025 según el Manual Práctico de la AEAT (edición 01/06/2026).</div>
+<div id="daut-content"><div class="ccaa-placeholder">👆 Selecciona tu comunidad autónoma en el selector de arriba para ver todas las deducciones aplicables a tu caso.</div></div>
+<textarea placeholder="📝 Selecciona tu comunidad autónoma arriba si aún no lo has hecho — las deducciones pueden ahorrarte mucho dinero. Si tienes dudas sobre alguna opción, escríbenos aquí."></textarea>
+</div></div>
+
+<!-- 10. EMPRESARIO/SOCIO -->
+<div class="sec"><div class="sec-hdr" onclick="tog('emp')"><div class="sec-icon">🏢</div><div class="sec-hdr-text"><h2>10. Situaciones especiales — empresario / socio</h2><div class="sec-hdr-sub">Solo si eres socio o administrador de una SL/SA, tienes una comunidad de bienes o cobraste dividendos de tu propia empresa.</div></div><span class="sec-badge">Empresario</span><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-emp">
+<div class="sec-desc">Circunstancias adicionales para socios o administradores de sociedades. Las operaciones entre el socio y su sociedad están sujetas a reglas especiales de valoración a precio de mercado (operaciones vinculadas).</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Socio de SL/SA con participación ≥5%</label><div class="hint">Operaciones vinculadas (art. 18 LIS): todas las transacciones con la sociedad deben valorarse a precio de mercado</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Administrador retribuido de sociedad</label><div class="hint">Los honorarios tributan como rendimiento del trabajo o de actividad profesional según el caso concreto</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Préstamo de la sociedad al socio</label><div class="hint">Si es a tipo inferior al mercado, la diferencia se considera rendimiento del capital mobiliario (interés presunto)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Dividendos de sociedad propia</label><div class="hint">Tributan en base del ahorro al 19%–28%. Riesgo de regularización si la sociedad es patrimonial o sin actividad real</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Venta de participaciones en 2025</label><div class="hint">Ganancia/pérdida patrimonial. Posible exención si es empresa familiar (art. 33.3 LIRPF). Consultar al despacho</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Sociedad civil o comunidad de bienes</label><div class="hint">Las rentas se atribuyen proporcionalmente a los socios/comuneros, que las declaran cada uno en su IRPF</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Tienes participaciones en una SL o SA? ¿Cuántas y qué porcentaje? ¿Cobraste dividendos en 2025? Cualquier operación con tu sociedad, anótala aquí."></textarea>
+</div></div>
+
+<!-- 11. RETENCIONES -->
+<div class="sec"><div class="sec-hdr" onclick="tog('ret')"><div class="sec-icon">📋</div><div class="sec-hdr-text"><h2>11. Retenciones y pagos fraccionados</h2><div class="sec-hdr-sub">Lo que ya has pagado a Hacienda durante 2025: retenciones en nómina, facturas o alquileres, y los pagos trimestrales de autónomos (mod. 130/131).</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-ret">
+<div class="sec-desc">Cantidades ya ingresadas a Hacienda durante 2025 que se descuentan de la cuota final. Los autónomos en estimación directa realizan 4 pagos trimestrales con el modelo 130.</div>
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Retenciones de nómina (certificado empresa)</label><div class="hint">Figura en el certificado de retenciones que la empresa entrega antes del 31/01/2026</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Retenciones en facturas profesionales</label><div class="hint">15% con carácter general. 7% en los 2 primeros años de actividad profesional</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Retenciones sobre alquileres cobrados</label><div class="hint">19% sobre alquileres de locales e inmuebles en general (no sobre alquileres de vivienda habitual)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Retenciones sobre dividendos e intereses</label><div class="hint">19%. Aparecen en los certificados bancarios y de la sociedad</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Pagos fraccionados mod. 130 (directa)</label><div class="hint">20% del rendimiento neto acumulado. Se presenta en abril, julio, octubre y enero</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Pagos fraccionados mod. 131 (módulos)</label><div class="hint">Importe fijo según módulos aprobados. Se presenta los mismos meses que el 130</div></div></div>
+</div>
+<div class="two-col">
+<div><label>Total pagos fraccionados 2025 (mod. 130/131) €</label><input type="number" placeholder="0" oninput="updProg()"></div>
+<div><label>Total retenciones soportadas (aprox.) €</label><input type="number" placeholder="0" oninput="updProg()"></div>
+</div>
+<textarea placeholder="📝 ¿Sabes aproximadamente cuánto te retuvieron en total en 2025? ¿Y cuánto pagaste en pagos fraccionados (mod. 130/131)? Si no tienes el dato, déjalo en blanco."></textarea>
+</div></div>
+
+<!-- 12. DOCUMENTACIÓN -->
+<div class="sec"><div class="sec-hdr" onclick="tog('doc')"><div class="sec-icon">📁</div><div class="sec-hdr-text"><h2>12. Documentación a aportar al despacho</h2><div class="sec-hdr-sub">Marca los documentos que tienes listos para enviarnos. Con todo esto preparado, tramitamos tu declaración de forma ágil y sin idas y venidas.</div></div><span class="chevron">▼</span></div>
+<div class="sec-body" id="body-doc">
+<div class="cg">
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Certificado de retenciones del empleador</label><div class="hint">La empresa lo facilita antes del 31/01/2026. Imprescindible si eres asalariado</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Modelo 130/131 de los 4 trimestres de 2025</label><div class="hint">Para autónomos. Acredita los pagos fraccionados realizados</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Certificados bancarios (intereses/dividendos)</label><div class="hint">El banco los envía en enero/febrero o están en los datos fiscales de la AEAT</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Escrituras de compra/venta de inmueble</label><div class="hint">Con todos los gastos para calcular correctamente la ganancia/pérdida patrimonial</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Contratos de arrendamiento vigentes</label><div class="hint">Con NIF del inquilino. Necesarios para aplicar la reducción del 60%</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Declaración IRPF 2024 (ejercicio anterior)</label><div class="hint">Para compensar pérdidas pendientes y verificar datos de partida</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Justificantes de donativos realizados</label><div class="hint">Certificado de la entidad con CIF y datos de la donación. Imprescindible para la deducción</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Certificado plan de pensiones</label><div class="hint">La gestora certifica las aportaciones del ejercicio 2025</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Recibos IBI de todos los inmuebles</label><div class="hint">Incluidos los inmuebles vacíos (necesario para la imputación de rentas)</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Historial de operaciones con criptomonedas 2025</label><div class="hint">Export del exchange con todas las operaciones del año</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Recibos del seguro médico privado (autónomos)</label><div class="hint">Para acreditar la deducción del art. 30.2.5ª.a LIRPF. Necesario el desglose por asegurado y prima</div></div></div>
+<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>Facturas veterinarias 2025 (Andalucía/Murcia/CLM)</label><div class="hint">Solo si resides en estas comunidades. Necesarias para la deducción autonómica por gastos veterinarios</div></div></div>
+</div>
+<textarea placeholder="📝 ¿Algo que no hayas podido marcar arriba? Herencias, inspecciones de Hacienda, cuentas en el extranjero, cambio de residencia... Cuéntanoslo aunque no sea del todo preciso."></textarea>
+</div></div>
+
+<div class="actions">
+<button class="btn-main" onclick="verResumen()">📋 Ver resumen del formulario</button>
+<button class="btn-sec" onclick="window.print()">🖨️ Imprimir / PDF</button>
+<button class="btn-sec" onclick="limpiar()">🗑️ Limpiar todo</button>
+</div>
+
+<div class="sum-box" id="sum-box">
+<h2>✅ Resumen del cuestionario — IRPF 2025</h2>
+<div id="sum-content"></div>
+<div class="sum-footer">Generado: <span id="sum-date"></span> &nbsp;·&nbsp; BeReady® · Manual Práctico AEAT Renta 2025 (01/06/2026) · www.beready.es</div>
+
+<!-- BEREADY FOOTER -->
+<div class="br-footer">
+  <div class="br-footer-logo">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAJZBE0DASIAAhEBAxEB/8QAHQABAQEBAQEBAQEBAAAAAAAAAAgJBwYFAwQCAf/EAFYQAQAABAMDBQoHCgwGAgMBAAABAgMEBQYHERjTCBIhVpUTMTdBUVVhdZOUFBYicXSz0gkVMldygYKRsbIXIzY4QkNSYnOhorQzVHaSwdElUyREwjT/xAAaAQEAAgMBAAAAAAAAAAAAAAAAAwYBAgQF/8QANhEBAAECAwYEBQQCAgIDAAAAAAECAwQRUQUSExUxUhQhcZEyNEGh0TNhgcGS4SKxQvAjJPH/2gAMAwEAAhEDEQA/ALLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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QMgAAAJT5QXJwzzqBqviua8FxPL1CxvJKEKcl3cVpasOZRkkjthLSmh35Y+PvPA7nupvnrKXvdxwF1D0aNqX6KYpjLKP2aTbiUK7nupvnrKXvdxwDc91N89ZS97uOAuobc3xOsezHDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHShXc91N89ZS97uOAbnupvnrKXvdxwF1BzfE6x7HDpQrue6m+espe93HANz3U3z1lL3u44C6g5vidY9jh0oV3PdTfPWUve7jgG57qb56yl73ccBdQc3xOsexw6UK7nupvnrKXvdxwDc91N89ZS97uOAuoOb4nWPY4dKFdz3U3z1lL3u44Bue6m+espe93HAXUHN8TrHscOlCu57qb56yl73ccA3PdTfPWUve7jgLqDm+J1j2OHSjnS3kt6g5W1Gy/mPEMWyzUtMNxClc1pKFzXjUmlkmhGMJYRowhGPzxgsYHJiMTcxExNf0bU0xT0AHO2AAAAZU6jeELMnra6+tmW3yEfAVD1rcfskRJqN4Qsyetrr62ZbfIR8BUPWtx+yRZtqfKx/CC38TvYCspwAHzsewHBMftJrTHMIsMTt5oRhGnd28tWXZH0TQimbXfkrYZcYfcY7pnJNZ3lKSM9TCJ54z06+zpj3KaaMYyzeSWMYyx6IQ5vjqodFjFXbFWdE/hiaYnqyPnluLO7mknlq29xQn2TSxhGWenPLHveWEYRg0C5IeqlXUPIk+G41dd2zDg3NpXM88flXFGP8Aw6vpj0Rlm9MNsfwnAuXdki2y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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="BeReady">
+  </div>
+  <div class="br-footer-info">
+    <strong style="color:#0d1b4b;">BeReady® — España y Portugal</strong><br>
+    Plaça Gal·la Placídia, 1-3 · 08006 Barcelona, España<br>
+    T. <a href="tel:+34936941250">+34 93 694 12 50</a> &nbsp;·&nbsp;
+    E. <a href="mailto:contacto@beready.es">contacto@beready.es</a><br>
+    <a href="https://www.beready.es" target="_blank">www.beready.es</a>
+  </div>
+</div>
+<div class="br-watermark">
+  © BeReady® 2025 · Documento confidencial · Uso exclusivo para clientes de BeReady · Prohibida su reproducción sin autorización
+</div>
+
+</div>
+
+
+<script>
+const CCAA = {
+  and: { label:'Andalucía', items:[
+    {l:'Inversión en VH protegida o adquirente &lt;35 años',h:'Si tienes &lt;35 años o tu VH es protegida (VPO): 6% de lo pagado por compra/rehabilitación. Límite renta: 25.000€ individual / 30.000€ conjunta. Base máx. 9.040€/año.',a:'6% s/máx.9.040€'},
+    {l:'Alquiler de la vivienda habitual',h:'Si tienes &lt;35 o ≥65 años, discapacidad, o eres víctima de violencia doméstica/terrorismo: 15% del alquiler. Límite renta: 25.000€/30.000€. Da el NIF del casero al despacho.',a:'15%, máx.1.200€ (1.500€ discap.)'},
+    {l:'Nacimiento, adopción o acogimiento de hijos',h:'Por cada hijo nacido/adoptado en 2025: 200€ general. 400€ si vives en municipio &lt;3.000 habitantes. Solo en el año del evento.',a:'200€ / 400€ despoblación'},
+    {l:'Adopción internacional',h:'Deducción adicional por los gastos del proceso de adopción en el extranjero. Consulta al despacho el importe exacto.',a:'Consultar'},
+    {l:'Familia monoparental (padre/madre solo con hijos)',h:'Para el padre o madre único. Puede aplicarse también si hay ascendientes &gt;75 años a cargo. Consultar importe.',a:'Consultar'},
+    {l:'Familia numerosa',h:'Complementaria a la estatal. Si eres familia numerosa y resides en Andalucía, consulta al despacho el importe adicional.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad reconocida',h:'Deducción adicional autonómica para contribuyentes con discapacidad. Aportar certificado de grado.',a:'Consultar'},
+    {l:'Cónyuge o pareja de hecho con discapacidad',h:'Si tu pareja tiene discapacidad reconocida y bajos ingresos propios. Consultar importe.',a:'Consultar'},
+    {l:'Asistencia a personas con discapacidad',h:'Por los gastos de asistencia o cuidado a personas con discapacidad. Requiere justificación del gasto.',a:'Consultar'},
+    {l:'Ayuda doméstica (empleado del hogar)',h:'Por contratar a un empleado del hogar con contrato y SS en regla. Consultar condiciones y límite de renta.',a:'Consultar'},
+    {l:'Enfermedad celíaca diagnosticada en la familia',h:'Por el sobrecoste demostrado de la dieta sin gluten. Requiere diagnóstico médico y facturas.',a:'Consultar'},
+    {l:'Inversión en capital de sociedades andaluzas (Business Angel)',h:'Por suscribir capital en sociedades con domicilio en Andalucía. Consultar porcentaje y límite.',a:'Consultar'},
+    {l:'Defensa jurídica de la relación laboral',h:'Por pagar abogado en un litigio laboral frente a tu empresa. Conservar factura.',a:'Consultar'},
+    {l:'Gastos educativos',h:'Matrícula, libros y material escolar de hijos. Revisar niveles educativos y límites de renta.',a:'Consultar'},
+    {l:'Fomento del deporte y actividad física',h:'Por gastos en instalaciones deportivas o actividades físicas. Revisar límite y condiciones.',a:'Consultar'},
+    {l:'🐾 Gastos veterinarios — animales de compañía (NUEVO 2025)',h:'30% de gastos obligatorios (vacunas, desparasitación, esterilización preceptiva). IMPORTANTE: solo durante el año siguiente a la compra del animal; 3 años si fue adopción. Límite renta: 80.000€/100.000€. Aportar facturas veterinarias.',a:'30%, máx.100€/año'},
+    {l:'🐕 Gastos veterinarios — perros de asistencia (NUEVO 2025)',h:'Mismos gastos obligatorios. Sin límite temporal mientras tengas el perro. Límite renta: 80.000€/100.000€. Aportar facturas.',a:'30%, máx.100€/año'},
+    {l:'Donativos con finalidad ecológica',h:'Por donativos a entidades públicas o sin ánimo de lucro cuyo fin sea la defensa del medio ambiente en Andalucía.',a:'Consultar'},
+  ]},
+  ara: { label:'Aragón', items:[
+    {l:'3er hijo o sucesivos (nacimiento/adopción)',h:'500€/hijo en general. 600€/hijo si tus rentas son bajas (base menos mínimos &lt;21.000€ individual). En zonas de despoblación: 600€ o 720€. Solo el año del nacimiento/adopción.',a:'500€–720€/hijo'},
+    {l:'Hijo nacido/adoptado con discapacidad ≥33%',h:'200€/hijo (general). 240€ en zona de despoblación. Compatible con la deducción anterior del 3er hijo.',a:'200€–240€/hijo'},
+    {l:'Adopción internacional',h:'Por los gastos del proceso de adopción en el extranjero. Importe a consultar.',a:'Consultar'},
+    {l:'Cuidado de personas dependientes',h:'Por gastos de cuidado de familiares en situación de dependencia. Requiere convivencia y límite de renta.',a:'Consultar'},
+    {l:'Mayores de 70 años',h:'Deducción específica si has cumplido 70 años antes del 31/12/2025. Consultar importe.',a:'Consultar'},
+    {l:'1er o 2º hijo en municipio &lt;10.000 hab.',h:'Para el nacimiento del 1er o 2º hijo en municipios aragoneses de menos de 10.000 habitantes.',a:'Consultar'},
+    {l:'Guardería para hijos &lt;3 años',h:'Por gastos en guarderías y centros de educación infantil autorizados para hijos menores de 3 años.',a:'Consultar'},
+    {l:'Clases de apoyo o refuerzo escolar',h:'Por los gastos en clases extraescolares de apoyo o refuerzo para tus hijos.',a:'Consultar'},
+    {l:'Formación para la autonomía de menores con discapacidad',h:'Por gastos de formación para la vida independiente de hijos o descendientes con discapacidad.',a:'Consultar'},
+    {l:'VH en núcleo rural o análogo (&lt;10.000 hab.)',h:'Por comprar o rehabilitar tu vivienda habitual en municipios aragoneses de menos de 10.000 hab.',a:'Consultar'},
+    {l:'Alquiler VH vinculado a dación en pago',h:'Si eres inquilino y el arrendamiento está vinculado a una operación de dación en pago del inmueble.',a:'Consultar'},
+    {l:'Arrendamiento social (para el casero)',h:'Si alquilas tu vivienda a precios reducidos como vivienda social en Aragón.',a:'Consultar'},
+    {l:'Residencia en determinados municipios',h:'Por residir en municipios aragoneses con características especiales de despoblación o ruralidad.',a:'Consultar'},
+    {l:'Donaciones ecológicas y de I+D+i',h:'Por donativos a entidades de medio ambiente o de investigación científica reconocidas en Aragón.',a:'Consultar'},
+    {l:'Inversión en entidades del MAB/BME Growth aragonesas',h:'Por invertir en empresas aragonesas cotizadas en el mercado alternativo bursátil.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas aragonesas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Aragón. Consultar porcentaje y límite.',a:'Consultar'},
+    {l:'Libros de texto y material escolar',h:'Por la compra de libros de texto y material escolar para tus hijos en enseñanza obligatoria.',a:'Consultar'},
+    {l:'Inversión en entidades de economía social',h:'Por aportaciones a cooperativas o sociedades laborales aragonesas.',a:'Consultar'},
+  ]},
+  ast: { label:'Principado de Asturias', items:[
+    {l:'Acogimiento no remunerado de mayores de 65 años',h:'Si acoge en tu casa, sin cobrar, a una persona mayor de 65 años (no familiar hasta 3er grado) más de 183 días al año: 500€ por persona acogida. Límite renta: 26.000€/37.000€.',a:'500€/persona acogida'},
+    {l:'Compra/adecuación de VH para discapacitado ≥65%',h:'Si el contribuyente, cónyuge, ascendiente o descendiente tiene discapacidad ≥65%: 3% de lo pagado. Base máx. 15.000€.',a:'3% s/máx.15.000€'},
+    {l:'Inversión en VH protegida (VPO)',h:'Para adquisición de vivienda de protección oficial como VH en Asturias.',a:'Consultar'},
+    {l:'Alquiler de la vivienda habitual',h:'Por pagar alquiler de tu VH. Porcentaje y condiciones de renta a consultar.',a:'Consultar'},
+    {l:'Adquisición/rehabilitación VH para colectivos especiales',h:'Para jóvenes, familias numerosas, monoparentales o discapacitados que adquieran o rehabiliten su VH.',a:'Consultar'},
+    {l:'Adopción internacional',h:'Por los gastos del proceso de adopción en el extranjero.',a:'Consultar'},
+    {l:'Partos múltiples o adopciones en la misma fecha',h:'Por partos múltiples (mellizos, trillizos…) o adopciones simultáneas. Deducción adicional.',a:'Consultar'},
+    {l:'Familias numerosas',h:'Complemento autonómico a la deducción estatal de familia numerosa.',a:'Consultar'},
+    {l:'Familias monoparentales',h:'Para el padre o madre único con hijos a cargo en Asturias.',a:'Consultar'},
+    {l:'Acogimiento familiar de menores',h:'Por el acogimiento de menores en Asturias (simple, permanente o preadoptivo).',a:'Consultar'},
+    {l:'Gastos en guarderías o centros 0-3 años',h:'Por los gastos en guarderías y centros de educación infantil para hijos menores de 3 años.',a:'Consultar'},
+    {l:'2º hijo o ss. en concejo en riesgo de despoblación',h:'Por el nacimiento/adopción del 2º hijo o sucesivos en concejos asturianos con crisis demográfica.',a:'Consultar'},
+    {l:'Cuidado de descendientes o adoptados hasta 25 años',h:'Por los gastos de cuidado de hijos o adoptados hasta 25 años con necesidades especiales.',a:'Consultar'},
+    {l:'ELA — ayudas del Principado de Asturias',h:'Para enfermos de ELA o familiares. Por las ayudas recibidas del Principado de Asturias.',a:'Consultar'},
+    {l:'Descendiente fallecido por accidente laboral del progenitor',h:'Para familias en que un descendiente ha fallecido a consecuencia de un accidente laboral.',a:'Consultar'},
+    {l:'Enfermedad celíaca diagnosticada',h:'Por el sobrecoste de la dieta sin gluten. Requiere diagnóstico médico.',a:'Consultar'},
+    {l:'Certificación de gestión forestal sostenible',h:'Para propietarios forestales con certificación reconocida en Asturias.',a:'Consultar'},
+    {l:'Libros de texto y material escolar',h:'Por los gastos en libros de texto y material escolar de hijos en Asturias.',a:'Consultar'},
+    {l:'Autónomo en concejo en riesgo de despoblación',h:'Para autónomos que se establezcan en concejos asturianos con crisis demográfica.',a:'Consultar'},
+    {l:'Transporte público en concejo en despoblación',h:'Por los gastos de transporte público habitual de residentes en concejos con riesgo de despoblación.',a:'Consultar'},
+    {l:'Formación en actividades I+D, científicas o técnicas',h:'Para trabajadores cualificados en I+D o ciencia: gastos de formación específica.',a:'Consultar'},
+    {l:'Traslado de domicilio fiscal a Asturias',h:'Por trasladar tu residencia habitual al Principado de Asturias por motivos laborales.',a:'Consultar'},
+    {l:'Adquisición de vehículo eléctrico',h:'Deducción autonómica asturiana por comprar un vehículo eléctrico nuevo.',a:'Consultar'},
+    {l:'Emancipación de jóvenes hasta 35 años',h:'Para jóvenes de hasta 35 años que se emancipen y fijen residencia en Asturias.',a:'Consultar'},
+    {l:'Arrendamiento de viviendas (para el casero)',h:'Para propietarios que alquilen viviendas en determinadas condiciones en Asturias.',a:'Consultar'},
+    {l:'Gastos vitales de contribuyentes hasta 35 años',h:'Para jóvenes de hasta 35 años: determinados gastos de vida independiente.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas asturianas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Asturias.',a:'Consultar'},
+  ]},
+  bal: { label:'Illes Balears', items:[
+    {l:'Mejoras de sostenibilidad en la VH',h:'Si eres propietario o arrendador y haces obras de eficiencia energética, energías renovables o ahorro de agua en la VH: 50% de lo invertido.',a:'50% de la inversión'},
+    {l:'Alquiler de la VH en Baleares (inquilino)',h:'Por pagar alquiler de tu VH en el territorio balear. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Alquiler por traslado laboral temporal (inquilino)',h:'Si alquilas en Baleares a causa de un traslado laboral temporal.',a:'Consultar'},
+    {l:'Primas de seguros de impago de alquiler (casero)',h:'Si eres propietario y contratas un seguro de crédito para cubrir impagos del inquilino de tu VH.',a:'Consultar'},
+    {l:'Otros gastos del casero de VH permanente',h:'Para arrendadores de VH permanente en Baleares: otros gastos deducibles.',a:'Consultar'},
+    {l:'Discapacidad física, psíquica o sensorial',h:'Deducción autonómica para contribuyentes o descendientes con discapacidad reconocida.',a:'Consultar'},
+    {l:'Gastos por cuidado de hijos &lt;6 años (conciliación)',h:'Por gastos de cuidado de menores de 6 años por motivos de conciliación laboral y familiar.',a:'Consultar'},
+    {l:'Nacimiento de un hijo',h:'Por el nacimiento de cada hijo durante 2025 en Baleares.',a:'Consultar'},
+    {l:'Adopción de un hijo',h:'Por la adopción de cada hijo durante 2025.',a:'Consultar'},
+    {l:'Gastos por personas mayores de 65 o con discapacidad',h:'Por determinados gastos de cuidado o atención a mayores de 65 años o con discapacidad a cargo.',a:'Consultar'},
+    {l:'Gastos derivados de ELA',h:'Para contribuyentes con ELA o con familiares a cargo con esta enfermedad.',a:'Consultar'},
+    {l:'Donaciones a I+D o innovación',h:'Por donativos a entidades cuyo objeto sea la investigación o el desarrollo científico o tecnológico.',a:'Consultar'},
+    {l:'Donativos al mecenazgo cultural, científico o tecnológico',h:'Por donaciones o cesiones de uso para el mecenazgo cultural, científico o de desarrollo tecnológico.',a:'Consultar'},
+    {l:'Donativos al mecenazgo deportivo',h:'Por donaciones o convenios de colaboración empresarial para el fomento del deporte en Baleares.',a:'Consultar'},
+    {l:'Donativos para el fomento de la lengua catalana',h:'Por donativos a entidades que fomenten la lengua catalana en las Illes Balears.',a:'Consultar'},
+    {l:'Donativos a entidades del tercer sector',h:'Para donativos a entidades del tercer sector reconocidas en Baleares.',a:'Consultar'},
+    {l:'Subvenciones por emergencia de protección civil',h:'Si has recibido ayudas por ser zona declarada gravemente afectada por una emergencia de protección civil.',a:'Consultar'},
+    {l:'Libros de texto',h:'Por la compra de libros de texto para hijos en enseñanza obligatoria.',a:'Consultar'},
+    {l:'Aprendizaje extraescolar de idiomas extranjeros',h:'Por los gastos de aprendizaje de idiomas extranjeros fuera del horario escolar.',a:'Consultar'},
+    {l:'Estudios superiores fuera de la isla de residencia',h:'Por cursar estudios universitarios fuera de la isla en que resides habitualmente.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas baleares',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Baleares.',a:'Consultar'},
+    {l:'Fomento de la autoocupación (autónomo)',h:'Para autónomos que se establezcan por primera vez en las Illes Balears.',a:'Consultar'},
+    {l:'Plazas de difícil cobertura en Baleares',h:'Por ocupar plazas laborales declaradas de difícil cobertura en las Illes Balears.',a:'Consultar'},
+    {l:'Vivienda ocupada ilegalmente (para el propietario)',h:'Para compensar gastos de propietarios con la vivienda ocupada ilegalmente o con lanzamiento suspendido. Novedad: solo si el propietario no falleció antes del 25/07/2025.',a:'Consultar'},
+  ]},
+  can: { label:'Canarias', items:[
+    {l:'Donaciones con finalidad ecológica',h:'10% de lo donado a entidades públicas o sin ánimo de lucro para la defensa del medio ambiente en Canarias. Límite: 10% de la cuota autonómica o 150€/contribuyente.',a:'10%, máx.150€'},
+    {l:'Donaciones para el Patrimonio Histórico de Canarias',h:'20% de lo donado para rehabilitar o conservar bienes inscritos en el Registro Canario de Bienes de Interés Cultural.',a:'20%'},
+    {l:'Donaciones para fines culturales, deportivos, I+D o docencia',h:'Por donativos a entidades sin ánimo de lucro para estos fines en Canarias.',a:'Consultar'},
+    {l:'Donaciones a entidades sin ánimo de lucro canarias',h:'Por donativos a entidades reconocidas en el territorio canario.',a:'Consultar'},
+    {l:'Inversión en VH — régimen transitorio (hipoteca pre-2013)',h:'Solo si tu hipoteca es anterior al 01/01/2013. Tramo autonómico canario de la deducción.',a:'Consultar'},
+    {l:'Obras de rehabilitación energética de la VH',h:'Por obras que mejoren la eficiencia energética de tu vivienda habitual en Canarias.',a:'Consultar'},
+    {l:'Obras de adecuación de la VH para discapacitados',h:'Por obras de adaptación de la VH para personas con discapacidad en Canarias.',a:'Consultar'},
+    {l:'Alquiler de la VH (inquilino)',h:'Por pagar alquiler de tu VH en Canarias. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Alquiler VH vinculado a dación en pago',h:'Si tu arrendamiento está vinculado a una operación de dación en pago del inmueble.',a:'Consultar'},
+    {l:'Nacimiento o adopción de hijos',h:'Por cada hijo nacido/adoptado durante 2025. Importe a consultar en normativa canaria.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad y &gt;65 años simultáneamente',h:'Para contribuyentes que tengan a la vez discapacidad reconocida y más de 65 años.',a:'Consultar'},
+    {l:'Acogimiento de menores',h:'Por el acogimiento familiar de menores en Canarias.',a:'Consultar'},
+    {l:'Familias monoparentales',h:'Para el padre o madre único con hijos a cargo en Canarias.',a:'Consultar'},
+    {l:'Gastos de guardería',h:'Por los gastos de custodia en guarderías para hijos menores de 3 años.',a:'Consultar'},
+    {l:'Familia numerosa',h:'Complemento autonómico a la deducción estatal para familias numerosas en Canarias.',a:'Consultar'},
+    {l:'Familiares dependientes con discapacidad',h:'Para contribuyentes con familiares dependientes con discapacidad a cargo.',a:'Consultar'},
+    {l:'Cuotas SS por empleados de hogar contratados',h:'Por las cuotas a la SS pagadas por la contratación de empleados del hogar.',a:'Consultar'},
+    {l:'Gastos de estudios superiores',h:'Por los gastos de matrícula y enseñanza de estudios universitarios en Canarias.',a:'Consultar'},
+    {l:'Gastos de estudios no superiores',h:'Por gastos educativos de hijos en enseñanza no universitaria.',a:'Consultar'},
+    {l:'Traslado de residencia a otra isla para trabajar',h:'Por los gastos del traslado a otra isla canaria para trabajar por cuenta propia o ajena.',a:'Consultar'},
+    {l:'Restauración de inmuebles de Interés Cultural en Canarias',h:'Por cantidades destinadas a restaurar inmuebles de Interés Cultural en Canarias.',a:'Consultar'},
+    {l:'Contribuyentes desempleados',h:'Para contribuyentes en situación de desempleo durante el ejercicio 2025.',a:'Consultar'},
+    {l:'Seguro de crédito por impago de alquiler (casero)',h:'Para arrendadores que contraten seguros de crédito ante impagos del inquilino.',a:'Consultar'},
+    {l:'Gasto de enfermedad',h:'Por determinados gastos médicos o sanitarios del contribuyente en Canarias.',a:'Consultar'},
+    {l:'Adecuación de inmueble para arrendamiento (casero)',h:'Para arrendadores que hagan obras de adecuación de un inmueble vacío para destinarlo a alquiler.',a:'Consultar'},
+    {l:'Puesta en alquiler de vivienda habitual (casero)',h:'Para propietarios que pongan su VH en el mercado de alquiler en Canarias.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas canarias',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Canarias.',a:'Consultar'},
+  ]},
+  cant: { label:'Cantabria', items:[
+    {l:'Alquiler de VH — &lt;36 años, ≥65 años o discapacidad ≥65%',h:'10% del alquiler. Máx. 300€ individual / 600€ conjunta. El alquiler debe superar el 10% de tu renta. Tienes que tener menos de 36 años, 65 o más, o discapacidad ≥65%.',a:'10%, máx.300€/600€'},
+    {l:'Alquiler de VH en municipio con riesgo de despoblamiento (inquilino)',h:'Para inquilinos cuya VH está en un municipio cántabro con riesgo de despoblamiento.',a:'Consultar'},
+    {l:'Residencia en municipio con riesgo de despoblamiento',h:'Por residir habitualmente en un municipio cántabro con riesgo de despoblamiento.',a:'Consultar'},
+    {l:'Obras de mejora en la VH propia',h:'Por obras de mejora o conservación de tu VH de propiedad en Cantabria.',a:'Consultar'},
+    {l:'Cuidado de hijos &lt;3 años, ascendientes &gt;70 años o discapacitados',h:'Por los gastos de cuidado de hijos menores de 3 años, ascendientes mayores de 70 años o discapacitados.',a:'Consultar'},
+    {l:'Acogimiento familiar de menores',h:'Por el acogimiento de menores en Cantabria.',a:'Consultar'},
+    {l:'Gastos de guardería',h:'Por gastos en guarderías para hijos menores de 3 años.',a:'Consultar'},
+    {l:'Familias monoparentales',h:'Para el padre o madre único con hijos a cargo en Cantabria.',a:'Consultar'},
+    {l:'Nacimiento y adopción de hijos',h:'Por el nacimiento o adopción de hijos durante 2025 en Cantabria.',a:'Consultar'},
+    {l:'Guardería en municipios con riesgo de despoblamiento',h:'Si vives en un municipio cántabro con riesgo de despoblamiento y tienes hijos en guardería.',a:'Consultar'},
+    {l:'Ayuda doméstica (empleado del hogar)',h:'Por contratar a un empleado del hogar en Cantabria.',a:'Consultar'},
+    {l:'Donativos al Fondo Cantabria Coopera o entidades para discapacitados',h:'Por donativos a fundaciones, al Fondo Cantabria Coopera o a asociaciones de apoyo a personas con discapacidad.',a:'Consultar'},
+    {l:'Inversiones o donativos a entidades de Economía Social de Cantabria',h:'Por invertir o donar a cooperativas, sociedades laborales u otras entidades de economía social de Cantabria.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas en Cantabria',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Cantabria.',a:'Consultar'},
+    {l:'Gastos de enfermedad',h:'Por determinados gastos médicos o sanitarios en Cantabria.',a:'Consultar'},
+    {l:'Traslado a municipio en riesgo de despoblamiento (laboral)',h:'Por los gastos del traslado a un municipio cántabro con riesgo de despoblamiento por motivos laborales.',a:'Consultar'},
+    {l:'Traslado por estudios a municipio de despoblamiento',h:'Por los gastos del traslado por razón de estudios a municipios de despoblamiento cántabros.',a:'Consultar'},
+    {l:'Gastos de educación',h:'Por los gastos educativos de hijos en Cantabria.',a:'Consultar'},
+    {l:'Nuevos contribuyentes procedentes del extranjero',h:'Para contribuyentes que trasladen su residencia a Cantabria desde el extranjero y realicen determinadas inversiones.',a:'Consultar'},
+    {l:'Gastos de desplazamiento de nuevos residentes en Cantabria',h:'Para nuevos residentes en Cantabria (desde el extranjero) por gastos de desplazamiento y permanencia inicial.',a:'Consultar'},
+    {l:'Alquiler de viviendas vacías (casero)',h:'Para propietarios que saquen al mercado de alquiler viviendas vacías en Cantabria.',a:'Consultar'},
+  ]},
+  clm: { label:'Castilla-La Mancha', items:[
+    {l:'Nacimiento o adopción de hijos',h:'100€ por un hijo en el parto; 500€ si son dos; 900€ si son tres o más. Lo que importa es el número por parto, no por el año. Límite renta: 27.000€/36.000€.',a:'100€/500€/900€ por parto'},
+    {l:'Familia numerosa',h:'200€ categoría general / 400€ especial. Con discapacidad ≥65% en la familia: 300€/900€.',a:'200€–900€'},
+    {l:'Contribuyente con discapacidad',h:'Deducción adicional autonómica. Aportar certificado de grado.',a:'Consultar'},
+    {l:'Ascendientes o descendientes con discapacidad',h:'Por tener a cargo familiares con discapacidad reconocida.',a:'Consultar'},
+    {l:'Mayores de 75 años',h:'Si has cumplido 75 años antes del 31/12/2025. Consultar importe.',a:'Consultar'},
+    {l:'Cuidado de ascendientes mayores de 75 años',h:'Por los gastos de cuidado de ascendientes de más de 75 años que convivan contigo.',a:'Consultar'},
+    {l:'Acogimiento no remunerado de menores',h:'Por el acogimiento familiar no remunerado de menores en CLM.',a:'Consultar'},
+    {l:'Acogimiento no remunerado de mayores de 65 o discapacitados',h:'Por acoger en tu casa, sin cobrar, a mayores de 65 años o personas con discapacidad.',a:'Consultar'},
+    {l:'Familias monoparentales',h:'Para el padre o madre único con hijos a cargo en CLM.',a:'Consultar'},
+    {l:'Gastos de guardería',h:'Por gastos en guarderías para hijos menores de 3 años.',a:'Consultar'},
+    {l:'Alquiler VH para menores de 36 años (inquilino)',h:'Por pagar alquiler de tu VH siendo menor de 36 años en CLM. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Alquiler VH dación en pago (inquilino)',h:'Si tu arrendamiento está vinculado a una operación de dación en pago.',a:'Consultar'},
+    {l:'Alquiler VH para familias numerosas (inquilino)',h:'Por pagar alquiler de tu VH siendo familia numerosa en CLM.',a:'Consultar'},
+    {l:'Alquiler VH para familias monoparentales (inquilino)',h:'Por pagar alquiler de tu VH siendo familia monoparental en CLM.',a:'Consultar'},
+    {l:'Alquiler VH para personas con discapacidad (inquilino)',h:'Por pagar alquiler de tu VH teniendo discapacidad reconocida en CLM.',a:'Consultar'},
+    {l:'Intereses de 1ª VH para menores de 40 años',h:'Por los intereses pagados por la financiación de tu primera VH si tienes menos de 40 años.',a:'Consultar'},
+    {l:'Residencia habitual en zonas rurales',h:'Por residir en zonas rurales de Castilla-La Mancha.',a:'Consultar'},
+    {l:'Compra o rehabilitación de VH en zonas rurales',h:'Por adquirir o rehabilitar tu VH en una zona rural de CLM.',a:'Consultar'},
+    {l:'Ahorro-inversión en primera VH (cuenta ahorro-vivienda)',h:'Por ahorrar en una cuenta específica destinada a la compra o construcción de tu primera VH en CLM.',a:'Consultar'},
+    {l:'Donaciones para cooperación internacional y lucha contra la pobreza',h:'Por donativos a entidades de cooperación internacional, lucha contra la pobreza y ayuda a discapacitados.',a:'Consultar'},
+    {l:'Donaciones para I+D e innovación empresarial',h:'Por donativos para la investigación, el desarrollo científico y la innovación empresarial.',a:'Consultar'},
+    {l:'Donaciones para el Patrimonio Cultural de CLM',h:'Por donativos de bienes culturales o para conservar el patrimonio cultural de Castilla-La Mancha.',a:'Consultar'},
+    {l:'Libros de texto, idiomas y gastos educativos',h:'Por los gastos en libros, enseñanza de idiomas y otros gastos educativos de tus hijos.',a:'Consultar'},
+    {l:'Traslado de la vivienda habitual dentro de CLM',h:'Por los gastos derivados de un traslado de la VH dentro de Castilla-La Mancha.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas en CLM',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en CLM.',a:'Consultar'},
+    {l:'Inversión en entidades de economía social',h:'Por aportaciones a cooperativas o sociedades laborales en CLM.',a:'Consultar'},
+    {l:'🐕 Gastos veterinarios de perros de asistencia',h:'30% de los gastos obligatorios de controles veterinarios y vacunación por tener un perro de asistencia debidamente certificado. Solo perros de asistencia, NO mascotas ordinarias. Aportar facturas.',a:'30% gastos veterinarios'},
+  ]},
+  cyl: { label:'Castilla y León', items:[
+    {l:'Familia numerosa',h:'600€ (general). 1.500€ si tienes 4 hijos con mínimo por descendiente. 2.500€ si 5 hijos (+1.000€ más por cada hijo a partir del 6º). Incremento de 600€ si algún familiar tiene discapacidad ≥65%.',a:'600€–2.500€+ incr.'},
+    {l:'Nacimiento o adopción de hijos',h:'Por cada hijo nacido/adoptado en 2025 que genere el derecho al mínimo por descendiente.',a:'Consultar'},
+    {l:'Partos o adopciones múltiples',h:'Incremento adicional por partos múltiples (mellizos, trillizos...) en CyL.',a:'Consultar'},
+    {l:'Gastos de adopción',h:'Por los gastos del proceso de adopción, nacional o internacional.',a:'Consultar'},
+    {l:'Cuidado de hijos menores',h:'Por los gastos de cuidado de tus hijos menores a cargo en CyL.',a:'Consultar'},
+    {l:'Cuotas SS de empleados del hogar',h:'Por las cuotas pagadas a la SS por contratar a un empleado del hogar.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad',h:'Deducción adicional autonómica para contribuyentes con discapacidad en CyL.',a:'Consultar'},
+    {l:'Compra/rehabilitación de VH por jóvenes en el medio rural',h:'Para jóvenes que adquieran o rehabiliten su VH en zonas rurales de CyL.',a:'Consultar'},
+    {l:'Alquiler de VH por jóvenes (inquilino)',h:'Por pagar alquiler de tu VH siendo joven en CyL. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Rehabilitación energética subvencionada de la VH',h:'Por actuaciones subvencionadas de rehabilitación para mejorar la eficiencia energética, sostenibilidad y accesibilidad de la VH.',a:'Consultar'},
+    {l:'Adquisición de VH de nueva construcción',h:'Por comprar una vivienda habitual de nueva construcción en Castilla y León.',a:'Consultar'},
+    {l:'Donaciones a fundaciones de CyL y recuperación del Patrimonio',h:'Por donativos a fundaciones de CyL y para recuperar el patrimonio histórico, cultural y natural.',a:'Consultar'},
+    {l:'Donaciones para I+D e innovación',h:'Por donativos para el fomento de la investigación, el desarrollo y la innovación.',a:'Consultar'},
+    {l:'Rehabilitación de viviendas en el medio rural para alquiler (casero)',h:'Para propietarios que rehabiliten viviendas en el medio rural de CyL para destinarlas al alquiler.',a:'Consultar'},
+    {l:'Inversión en recuperación del Patrimonio histórico de CyL (propietario)',h:'Por las cantidades invertidas directamente por los titulares en la recuperación del patrimonio histórico y natural de CyL.',a:'Consultar'},
+    {l:'Fomento de la movilidad sostenible',h:'Por adquirir vehículos eléctricos, bicicletas u otros medios de transporte sostenible en CyL.',a:'Consultar'},
+    {l:'Fomento del emprendimiento en CyL',h:'Para nuevos autónomos o emprendedores que creen su empresa en Castilla y León.',a:'Consultar'},
+  ]},
+  cat: { label:'Cataluña', items:[
+    {l:'Nacimiento, adopción o acogimiento familiar de un hijo',h:'150€ en la declaración individual de cada progenitor. 300€ en conjunta o si eres familia monoparental. Si adoptas al mismo menor que ya tenías acogido, solo puedes aplicar la del acogimiento.',a:'150€ indiv. / 300€ conjunta'},
+    {l:'Quedaste viudo/a en 2023, 2024 o 2025',h:'150€ general. 300€ si tienes hijos con derecho al mínimo por descendiente. Se aplica el año de la viudedad y los 2 siguientes.',a:'150€–300€ (3 años)'},
+    {l:'Alquiler de la VH (inquilino)',h:'Si tienes ≤35 años, estuviste en paro ≥183 días, tienes discapacidad ≥65% o eres viudo/a ≥65 años: 10% del alquiler, máx. 500€ individual (1.000€ conjunta o familia numerosa/monoparental). El límite de renta es la base imponible MENOS el mínimo personal y familiar: ≤30.000€ individual / 45.000€ conjunta.',a:'10%, máx.500€/1.000€'},
+    {l:'Alquiler de VH — víctimas de violencia machista',h:'20% del alquiler, máx. 1.000€. 25% / máx. 1.200€ si tienes discapacidad ≥65% o hijos menores a cargo. Solo si acreditas ser víctima según la Ley 5/2008. Máximo 3 ejercicios consecutivos.',a:'20-25%, máx.1.000-1.200€'},
+    {l:'Rehabilitación de la vivienda habitual',h:'1,5% de lo pagado por obras de rehabilitación de tu VH. Base máxima: 9.040€/año.',a:'1,5% s/máx.9.040€'},
+    {l:'Tramo autonómico VH (hipoteca anterior al 01/01/2013)',h:'Solo si tu hipoteca es anterior al 01/01/2013. El tramo autonómico catalán es del 7,5%, que se suma al 7,5% estatal.',a:'7,5% tramo autonómico'},
+    {l:'Donativos para el fomento de la lengua catalana u occitana',h:'15% de lo donado al Institut d\'Estudis Catalans, al IELAO o a entidades del censo de fomento de la lengua. Límite: 10% de tu cuota íntegra autonómica.',a:'15%, máx.10% cuota'},
+    {l:'Donativos a universidades catalanas e I+D+i',h:'30% de lo donado a universidades catalanas o centros de investigación de la Generalitat. Límite: 10% de tu cuota íntegra autonómica.',a:'30%, máx.10% cuota'},
+    {l:'Donativos a entidades de medio ambiente y custodia del territorio',h:'15% de lo donado a fundaciones o asociaciones del censo catalán de entidades ambientales. Límite: 5% de tu cuota íntegra autonómica.',a:'15%, máx.5% cuota'},
+    {l:'Ángel inversor — acciones/participaciones en empresas nuevas catalanas',h:'40% de lo invertido en SA/SL con domicilio en Cataluña, actividad real y al menos 1 empleado a jornada completa. Máx. 12.000€. 50% si la empresa es de origen universitario. Participación máx. 35%. Mantener las acciones 3 años. Facturación de la empresa &lt;1M€.',a:'40% (50% univ.), máx.12.000€'},
+    {l:'Cooperativas agrarias y de vivienda catalanas',h:'20% de las aportaciones a cooperativas agrarias o de vivienda inscritas en el registro catalán. Máx. 3.000€/año. Mantener al menos 5 años. Tu participación no puede superar el 25% de los votos.',a:'20%, máx.3.000€'},
+    {l:'Intereses de préstamos AGAUR para máster o doctorado',h:'El 100% de los intereses pagados por préstamos de la AGAUR (Agència de Gestió d\'Ajuts Universitaris) para financiar estudios de máster o doctorado.',a:'100% de los intereses'},
+    {l:'Obligación de declarar por tener más de un pagador',h:'Si tus rentas del trabajo estuvieron entre 15.876€ y 22.000€ con más de un pagador y tuviste que declarar por eso: la diferencia entre tu cuota autonómica y la estatal (si es positiva). No aplica a pensionistas del modelo 146.',a:'Diferencia cuotas (si positiva)'},
+  ]},
+  ext: { label:'Extremadura', items:[
+    {l:'Trabajo dependiente con rentas muy bajas',h:'Si tus ingresos íntegros del trabajo no superan 12.000€ y el resto de tus rentas netas es menor de 300€: 75€ por declarante que cumpla esto.',a:'75€/contribuyente'},
+    {l:'Partos múltiples (mellizos, trillizos...)',h:'300€ por cada hijo nacido en el mismo parto que conviva contigo. Límite renta: 19.000€/24.000€ general; 28.000€/45.000€ en municipios &lt;3.000 hab.',a:'300€/hijo en parto múltiple'},
+    {l:'Cuidado de familiares con discapacidad',h:'Por los gastos de cuidado de familiares con discapacidad reconocida a cargo.',a:'Consultar'},
+    {l:'Cuidado de hijos de hasta 14 años',h:'Por los gastos de cuidado de hijos menores de 14 años a cargo en Extremadura.',a:'Consultar'},
+    {l:'Contribuyente viudo/a',h:'Deducción específica para viudos/as en Extremadura. Incompatible con la de rentas bajas si te aplica también esa.',a:'Consultar'},
+    {l:'Acogimiento de menores',h:'Por el acogimiento familiar de menores en Extremadura.',a:'Consultar'},
+    {l:'ELA — ayudas de la Comunidad de Extremadura',h:'Por las ayudas y subvenciones recibidas de la Junta de Extremadura por ELA.',a:'Consultar'},
+    {l:'Deducción para enfermos de ELA y familiares',h:'Deducción adicional para enfermos de ELA y los familiares que los cuiden.',a:'Consultar'},
+    {l:'Compra/rehabilitación VH para jóvenes y víctimas del terrorismo',h:'Para jóvenes o víctimas del terrorismo que adquieran o rehabiliten su VH en Extremadura.',a:'Consultar'},
+    {l:'Alquiler VH para menores de 36 años (inquilino)',h:'Por pagar alquiler de tu VH siendo menor de 36 años en Extremadura.',a:'Consultar'},
+    {l:'Compra/rehabilitación VH en zonas rurales',h:'Por adquirir o rehabilitar tu VH en zonas rurales de Extremadura.',a:'Consultar'},
+    {l:'Residencia en municipios &lt;3.000 hab. de Extremadura',h:'Por residir en municipios extremeños con menos de 3.000 habitantes.',a:'Consultar'},
+    {l:'Intereses de VH para jóvenes en Extremadura',h:'Por los intereses pagados de financiación ajena para invertir en VH si eres joven en Extremadura.',a:'Consultar'},
+    {l:'Traslado de residencia a Extremadura',h:'Para contribuyentes que trasladen su residencia habitual a Extremadura desde otra comunidad o del extranjero.',a:'Consultar'},
+    {l:'Donaciones a entidades culturales, artísticas o patrocinio de deportistas',h:'Por donativos dinerarios a entidades culturales o artísticas extremeñas y para el patrocinio de deportistas.',a:'Consultar'},
+    {l:'Compra de material escolar',h:'Por la compra de material escolar para hijos en Extremadura.',a:'Consultar'},
+    {l:'Rendimientos del trabajo dependiente (Extremadura)',h:'Deducción autonómica adicional para trabajadores por cuenta ajena en Extremadura.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas extremeñas',h:'Por suscribir capital en sociedades mercantiles con domicilio en Extremadura.',a:'Consultar'},
+    {l:'Alquiler de viviendas vacías (casero)',h:'Para propietarios que pongan en alquiler viviendas vacías en Extremadura.',a:'Consultar'},
+    {l:'Rehabilitación de viviendas en zonas rurales para alquiler (casero)',h:'Para propietarios que rehabiliten viviendas en zonas rurales extremeñas para destinarlas al alquiler.',a:'Consultar'},
+  ]},
+  gal: { label:'Galicia', items:[
+    {l:'Nacimiento o adopción de hijos',h:'Si tu base imponible menos el mínimo personal/familiar es ≤22.000€: 360€ 1er hijo / 1.200€ 2º / 2.400€ 3er hijo y ss. Si supera 22.000€: 300€/hijo (360€ en parto múltiple). +20% si vives en municipio &lt;5.000 hab. La deducción se puede aplicar también los 2 ejercicios siguientes.',a:'300€–2.400€ según renta'},
+    {l:'Familias con 2 hijos',h:'Por el hecho de tener exactamente 2 hijos en la unidad familiar. Consultar condiciones de renta.',a:'Consultar'},
+    {l:'Familia numerosa',h:'Complemento autonómico a la deducción estatal de familia numerosa.',a:'Consultar'},
+    {l:'Acogimiento familiar de menores',h:'Por el acogimiento de menores en Galicia.',a:'Consultar'},
+    {l:'Cuidado de hijos menores',h:'Por los gastos de cuidado de hijos menores a cargo en Galicia.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad ≥65 años que necesita ayuda de terceros',h:'Para contribuyentes con discapacidad de 65 o más años que necesiten la asistencia de otras personas.',a:'Consultar'},
+    {l:'Ayudas/subvenciones por ELA',h:'Por las ayudas recibidas por personas con diagnóstico de ELA o sus fenotipos.',a:'Consultar'},
+    {l:'Ayudas por talidomida en España (1950-1985)',h:'Por las ayudas recibidas por personas afectadas por la talidomida en España en ese período.',a:'Consultar'},
+    {l:'Alquiler de la VH (inquilino)',h:'Por pagar alquiler de tu VH en Galicia. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Instalación de climatización/ACS con energías renovables en VH',h:'Por invertir en instalaciones de climatización o agua caliente sanitaria con energías renovables en tu VH, destinadas al autoconsumo.',a:'Consultar'},
+    {l:'Obras de mejora de eficiencia energética en edificios/VH',h:'Por obras de mejora de la eficiencia energética en edificios de viviendas o VH unifamiliares en Galicia.',a:'Consultar'},
+    {l:'Compra/rehabilitación de vivienda en aldeas modelo',h:'Para adquisición y rehabilitación de viviendas en los proyectos de aldeas modelo de Galicia.',a:'Consultar'},
+    {l:'Donaciones para I+D+i tecnológica en Galicia',h:'Por donativos a entidades que fomenten la investigación y el desarrollo tecnológico en Galicia.',a:'Consultar'},
+    {l:'Gastos para el uso de nuevas tecnologías en el hogar gallego',h:'Por gastos dirigidos al uso de nuevas tecnologías (internet, dispositivos digitales) en el hogar.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas gallegas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Galicia.',a:'Consultar'},
+    {l:'Business Angel — entidades de reciente creación (ampliado)',h:'Deducción ampliada que incluye también la financiación de entidades de reciente creación en Galicia.',a:'Consultar'},
+    {l:'Inversión en entidades del MAB/BME Growth gallegas',h:'Por invertir en empresas gallegas cotizadas en el segmento de expansión del mercado alternativo.',a:'Consultar'},
+    {l:'Rehabilitación de inmuebles en centros históricos gallegos',h:'Por rehabilitar bienes inmuebles en centros históricos reconocidos de Galicia.',a:'Consultar'},
+    {l:'Inversión en empresas con actividades agrarias en Galicia',h:'Por invertir en el capital de empresas que desarrollen actividades agrarias en Galicia.',a:'Consultar'},
+    {l:'Ayudas a deportistas de alto nivel de Galicia',h:'Por las ayudas y subvenciones recibidas por deportistas de alto nivel reconocidos por la Xunta.',a:'Consultar'},
+    {l:'Inversión en entidades de proyectos de especial interés en Galicia',h:'Por invertir en entidades que realicen proyectos declarados de especial interés público, social o económico en Galicia.',a:'Consultar'},
+    {l:'Adecuación de inmueble vacío para arrendamiento como VH (casero)',h:'Para arrendadores que hagan obras de adecuación de un inmueble vacío para destinarlo a alquiler como vivienda habitual.',a:'Consultar'},
+    {l:'Alquiler de viviendas vacías (casero)',h:'Para propietarios que pongan en alquiler viviendas vacías en Galicia.',a:'Consultar'},
+    {l:'🔥 Subvenciones por incendios PEIFOGA 2025 (NUEVO)',h:'Deducción nueva 2025: por las subvenciones u ayudas obtenidas por los daños de los incendios forestales que activaron el PEIFOGA en Situación 2 en Galicia en 2025. Aportar documentación de la ayuda.',a:'Consultar'},
+    {l:'Libros de texto y material escolar',h:'Por la compra de libros de texto y material escolar para tus hijos en Galicia.',a:'Consultar'},
+  ]},
+  mad: { label:'Comunidad de Madrid', items:[
+    {l:'Nacimiento o adopción de hijos',h:'721,70€/hijo (para nacimientos/adopciones desde el 01/01/2023; 600€ para anteriores). Se aplica el año del nacimiento/adopción y los 2 siguientes. Límite renta: 30.930€ individual / 37.322,20€ conjunta. También hay un límite para el conjunto de la unidad familiar.',a:'721,70€/hijo (3 años)'},
+    {l:'Adopción internacional',h:'Por los gastos del proceso de adopción en el extranjero. Consultar importe exacto.',a:'Consultar'},
+    {l:'Acogimiento familiar de menores',h:'Por el acogimiento de menores en la Comunidad de Madrid.',a:'Consultar'},
+    {l:'Acogimiento no remunerado de mayores de 65 años o discapacitados',h:'Por acoger en tu casa, sin cobrar, a personas mayores de 65 años o con discapacidad.',a:'Consultar'},
+    {l:'Cuidado de hijos &lt;3 años, mayores dependientes y discapacitados',h:'Por los gastos de cuidado de hijos menores de 3 años, ascendientes dependientes y personas con discapacidad.',a:'Consultar'},
+    {l:'Familias con 2+ descendientes y rentas reducidas',h:'Deducción especial para familias madrileñas con dos o más descendientes e ingresos reducidos.',a:'Consultar'},
+    {l:'Cuidado de ascendientes',h:'Por los gastos de cuidado de tus padres o abuelos dependientes o con discapacidad.',a:'Consultar'},
+    {l:'Obtención del título de familia numerosa',h:'Por obtener o renovar el título de familia numerosa en el año 2025.',a:'Consultar'},
+    {l:'Alquiler de la VH (inquilino)',h:'Por pagar alquiler de tu VH en Madrid. Porcentaje y condiciones de edad y renta a consultar.',a:'Consultar'},
+    {l:'Intereses de préstamos para VH de jóvenes &lt;30 años',h:'Por los intereses de un préstamo para comprar tu VH si tienes menos de 30 años.',a:'Consultar'},
+    {l:'Compra de VH por nacimiento/adopción de hijos',h:'Si has comprado una VH como consecuencia del nacimiento o adopción de hijos.',a:'Consultar'},
+    {l:'Subida de tipos de interés en la hipoteca de la VH',h:'Para contribuyentes que hayan soportado un incremento en los costes de financiación de su VH por la subida de tipos.',a:'Consultar'},
+    {l:'Compra de VH en municipios madrileños en riesgo de despoblación',h:'Por adquirir tu VH en municipios de la Comunidad de Madrid en riesgo de despoblación.',a:'Consultar'},
+    {l:'Cambio de residencia a municipio en riesgo de despoblación',h:'Por trasladar tu residencia habitual a un municipio madrileño en riesgo de despoblación.',a:'Consultar'},
+    {l:'Donativos a fundaciones y clubes deportivos',h:'Por donativos a fundaciones o clubes deportivos reconocidos en la Comunidad de Madrid.',a:'Consultar'},
+    {l:'Gastos educativos',h:'Por gastos de escolaridad, libros y material escolar de tus hijos en Madrid.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas madrileñas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Madrid.',a:'Consultar'},
+    {l:'Fomento del autoempleo de jóvenes',h:'Para jóvenes que se establezcan como autónomos o creen una empresa en Madrid.',a:'Consultar'},
+    {l:'Inversión en entidades del MAB/BME Growth madrileñas',h:'Por invertir en empresas madrileñas cotizadas en el segmento de expansión del mercado alternativo.',a:'Consultar'},
+    {l:'Gastos derivados del arrendamiento de vivienda (casero)',h:'Para propietarios que alquilen viviendas en Madrid en determinadas condiciones.',a:'Consultar'},
+    {l:'Intereses de préstamos para estudios de Grado, Máster o Doctorado',h:'Por los intereses de préstamos para financiar estudios universitarios de cualquier nivel.',a:'Consultar'},
+    {l:'Alquiler de viviendas vacías (casero)',h:'Para propietarios que saquen al mercado viviendas vacías en Madrid.',a:'Consultar'},
+    {l:'Nuevos contribuyentes procedentes del extranjero',h:'Para contribuyentes que trasladen su residencia a Madrid desde el extranjero y realicen determinadas inversiones.',a:'Consultar'},
+  ]},
+  mur: { label:'Región de Murcia', items:[
+    {l:'Gastos de guardería',h:'Por gastos en guarderías y centros de educación infantil para hijos menores de 3 años en Murcia.',a:'Consultar'},
+    {l:'Nacimiento o adopción de hijos',h:'Por cada hijo nacido/adoptado durante 2025. Importe a consultar en normativa murciana.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad',h:'Deducción adicional autonómica para contribuyentes con discapacidad reconocida.',a:'Consultar'},
+    {l:'Conciliación laboral y familiar',h:'Para contribuyentes que concilien trabajo y familia en Murcia. Condiciones a consultar.',a:'Consultar'},
+    {l:'Acogimiento no remunerado de mayores de 65 o discapacitados',h:'Por acoger en tu casa, sin cobrar, a mayores de 65 años o personas con discapacidad.',a:'Consultar'},
+    {l:'Familias monoparentales',h:'Para el padre o madre único con hijos a cargo en Murcia.',a:'Consultar'},
+    {l:'Enfermedades Raras',h:'Para contribuyentes con enfermedades raras diagnosticadas o con familiares a cargo con ellas.',a:'Consultar'},
+    {l:'Inversión en VH para jóvenes ≤40 años (incluye régimen transitorio)',h:'Para contribuyentes de 40 años o menos que inviertan en su VH en Murcia. También incluye el tramo transitorio para hipotecas anteriores al 01/01/2013.',a:'Consultar'},
+    {l:'Dispositivos domésticos de ahorro de agua',h:'Por comprar dispositivos certificados que permitan ahorrar agua en tu hogar.',a:'Consultar'},
+    {l:'Instalación de energías renovables en la vivienda',h:'Por instalar paneles solares, aerotermia u otras energías renovables en tu vivienda en Murcia.',a:'Consultar'},
+    {l:'Alquiler de la VH (inquilino)',h:'Por pagar alquiler de tu VH en Murcia. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Nueva VH o ampliación para familias numerosas',h:'Por comprar una VH nueva o ampliar la actual si eres familia numerosa en Murcia.',a:'Consultar'},
+    {l:'Donativos para el Patrimonio Cultural de Murcia',h:'Por donativos para proteger el patrimonio cultural murciano o promover actividades culturales, artísticas, científicas o medioambientales.',a:'Consultar'},
+    {l:'Donativos para investigación biosanitaria en Murcia',h:'Por donativos para la investigación biosanitaria en entidades reconocidas de Murcia.',a:'Consultar'},
+    {l:'Donaciones de bienes del Inventario del Patrimonio Cultural de Murcia',h:'Por donar bienes inscritos en el Inventario del Patrimonio Cultural de la Región de Murcia.',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas murcianas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en Murcia.',a:'Consultar'},
+    {l:'Inversión en entidades del MAB/BME Growth murcianas',h:'Por invertir en empresas murcianas cotizadas en el segmento de expansión del mercado alternativo.',a:'Consultar'},
+    {l:'Material escolar y libros de texto',h:'Por la compra de material escolar y libros de texto para tus hijos en Murcia.',a:'Consultar'},
+    {l:'Para mujeres trabajadoras',h:'Deducción específica para mujeres trabajadoras en la Región de Murcia. Condiciones a consultar.',a:'Consultar'},
+    {l:'Gastos de enseñanza de idiomas',h:'Por los gastos de aprendizaje de idiomas extranjeros para ti o tus hijos.',a:'Consultar'},
+    {l:'Gastos de acceso a Internet en el hogar',h:'Por los gastos de contratación de internet en tu hogar en Murcia.',a:'Consultar'},
+    {l:'Compra de vehículo eléctrico',h:'Por comprar un vehículo eléctrico nuevo para uso particular en Murcia.',a:'Consultar'},
+    {l:'Instalación de infraestructura de recarga eléctrica',h:'Por instalar un punto de recarga de vehículos eléctricos en tu domicilio o garaje.',a:'Consultar'},
+    {l:'Cristales graduados, lentes de contacto y soluciones',h:'Por los gastos de óptica: gafas graduadas, lentes de contacto y soluciones de limpieza.',a:'Consultar'},
+    {l:'Práctica del deporte y actividades saludables',h:'Por los gastos en actividades deportivas y saludables del contribuyente o sus hijos.',a:'Consultar'},
+    {l:'Inversión en entidades de economía social',h:'Por aportaciones a cooperativas o sociedades laborales en Murcia.',a:'Consultar'},
+    {l:'🐾 Gastos veterinarios de animales domésticos (NUEVO 2025)',h:'30% de los gastos de servicios veterinarios prestados a tus animales domésticos. Límite: 100€ POR DECLARACIÓN (si declaras conjunta, el límite es para los dos). Límite renta: 25.000€ individual / 40.000€ conjunta. Sin límite temporal. Aportar facturas del veterinario.',a:'30%, máx.100€/declaración'},
+  ]},
+  rio: { label:'La Rioja', items:[
+    {l:'Nacimiento y adopción de hijos',h:'600€ por el primer hijo. 750€ por el segundo. 900€ por el tercero y siguientes. 60€ adicionales en nacimientos/adopciones múltiples. Si declaráis individualmente, cada progenitor aplica la mitad.',a:'600€/750€/900€'},
+    {l:'VH en pequeño municipio riojano (compra/construcción/rehabilitación)',h:'Por adquirir, construir o rehabilitar tu VH en un pequeño municipio de La Rioja. Porcentaje y condiciones a consultar.',a:'Consultar'},
+    {l:'Guardería (0-3 años) en pequeño municipio riojano',h:'Por gastos en guarderías para hijos de 0 a 3 años si vives en un pequeño municipio de La Rioja.',a:'Consultar'},
+    {l:'Acogimiento familiar de menores',h:'Por el acogimiento de menores en La Rioja (urgencia, temporal, permanente o guarda).',a:'Consultar'},
+    {l:'Hijo 0-3 años en pequeño municipio riojano (residencia ≥3 años)',h:'Si tienes hijos de 0 a 3 años y resides (o te trasladas) a un pequeño municipio riojano y mantienes esa residencia al menos 3 años.',a:'Consultar'},
+    {l:'Hijo 0-3 años en escuela infantil de cualquier municipio de La Rioja',h:'Por cada hijo de 0 a 3 años escolarizado en una escuela infantil de cualquier municipio riojano.',a:'Consultar'},
+    {l:'ELA — enfermos y familiares',h:'Deducción específica para enfermos de ELA y sus familiares en La Rioja.',a:'Consultar'},
+    {l:'Enfermedad celíaca diagnosticada',h:'Por el sobrecoste de la dieta sin gluten. Requiere diagnóstico médico y facturas.',a:'Consultar'},
+    {l:'Inversión en VH para jóvenes &lt;36 años',h:'Por invertir en la compra o construcción de tu VH si tienes menos de 36 años en La Rioja.',a:'Consultar'},
+    {l:'Acceso a internet para jóvenes emancipados',h:'Por los gastos de contratación de internet para jóvenes emancipados en La Rioja.',a:'Consultar'},
+    {l:'Suministro de luz y gas para jóvenes emancipados',h:'Por los gastos de electricidad y gas doméstico para jóvenes emancipados en La Rioja.',a:'Consultar'},
+    {l:'Alquiler VH para menores de 36 años (inquilino)',h:'Por pagar alquiler de tu VH siendo menor de 36 años en La Rioja.',a:'Consultar'},
+    {l:'Ahorro para la compra/construcción de VH para jóvenes',h:'Por las cantidades ahorradas para adquirir o construir tu primera VH si eres joven en La Rioja.',a:'Consultar'},
+    {l:'Obras de rehabilitación de la VH en La Rioja',h:'Por los gastos de rehabilitación de tu VH en La Rioja.',a:'Consultar'},
+    {l:'Obras de adecuación de VH para discapacitados',h:'Por obras de adaptación de tu VH para personas con discapacidad en La Rioja.',a:'Consultar'},
+    {l:'Subida de intereses de la hipoteca de la VH',h:'Para contribuyentes que hayan sufrido un incremento en los intereses hipotecarios de su VH por la subida de tipos.',a:'Consultar'},
+    {l:'Fijación de población en el medio rural riojano',h:'Para contribuyentes que fijen o mantengan su residencia en el medio rural de La Rioja.',a:'Consultar'},
+    {l:'2ª vivienda en el medio rural riojano (compra/rehabilitación)',h:'Por adquirir o rehabilitar una segunda vivienda en el medio rural de La Rioja.',a:'Consultar'},
+    {l:'Compra de vehículo eléctrico nuevo',h:'Deducción autonómica riojana por comprar un vehículo eléctrico nuevo.',a:'Consultar'},
+    {l:'Compra de bicicleta de pedaleo no asistido',h:'Por la compra de bicicleta convencional (sin motor) para uso personal en La Rioja.',a:'Consultar'},
+    {l:'Fomento del ejercicio físico y el deporte',h:'Por los gastos en actividades deportivas y de fomento del ejercicio físico en La Rioja.',a:'Consultar'},
+    {l:'Cuotas a organizaciones profesionales agrarias',h:'Por las cuotas pagadas a organizaciones profesionales agrarias reconocidas en La Rioja.',a:'Consultar'},
+    {l:'Donativos para el mecenazgo',h:'Por donaciones para el estímulo de las actividades de mecenazgo en La Rioja.',a:'Consultar'},
+    {l:'Donativos para I+D y Patrimonio Histórico de La Rioja',h:'Por donativos para la investigación, conservación, restauración y rehabilitación de bienes del Patrimonio Histórico Riojano.',a:'Consultar'},
+    {l:'Donativos a empresas culturales riojanas',h:'Por donaciones a empresas culturales reconocidas de La Rioja.',a:'Consultar'},
+    {l:'Donación de bienes culturales por sus autores o herederos',h:'Por donar bienes culturales propios (como creador o heredero) en La Rioja.',a:'Consultar'},
+  ]},
+  val: { label:'Comunitat Valenciana', items:[
+    {l:'Nacimiento, adopción, delegación de guarda o acogimiento familiar',h:'300€ por cada hijo o acogido (aplicable desde el 01/06/2025; antes también 300€ pero bajo redacción anterior). Límite de base liquidable: 30.000€ individual / 47.000€ conjunta.',a:'300€/hijo o acogido'},
+    {l:'Partos o adopciones múltiples',h:'Deducción adicional por partos múltiples (mellizos, trillizos...) en la CV. Importe a consultar.',a:'Consultar'},
+    {l:'Nacimiento/adopción/acogimiento de persona con discapacidad',h:'Deducción adicional por nacimiento, adopción o acogimiento de personas con discapacidad en la CV.',a:'Consultar'},
+    {l:'Familia numerosa o monoparental',h:'Complemento autonómico para familias numerosas o monoparentales con hijos a cargo en la CV.',a:'Consultar'},
+    {l:'Guardería y centros de 1er ciclo de educación infantil',h:'Por los gastos de custodia no ocasional de hijos menores de 3 años en guarderías y centros autorizados.',a:'Consultar'},
+    {l:'Conciliación del trabajo con la vida familiar',h:'Deducción autonómica valenciana específica por conciliación del trabajo y la vida familiar.',a:'Consultar'},
+    {l:'Contribuyente con discapacidad ≥33% de 65 o más años',h:'Para contribuyentes con discapacidad reconocida ≥33% y edad ≥65 años simultáneamente.',a:'Consultar'},
+    {l:'Ascendientes mayores de 75 años o &gt;65 con discapacidad',h:'Por tener a cargo ascendientes de más de 75 años o de más de 65 años con discapacidad.',a:'Consultar'},
+    {l:'Contratación indefinida de empleados de hogar (SS) para cuidar personas',h:'Por contratar indefinidamente, con SS, a un empleado del hogar para cuidar a personas en la CV.',a:'Consultar'},
+    {l:'Contribuyentes con 2 o más descendientes',h:'Deducción específica para contribuyentes con 2 o más descendientes en la CV.',a:'Consultar'},
+    {l:'1ª compra de VH habitual para ≤35 años',h:'Por la primera adquisición de tu VH si tienes 35 años o menos en la CV.',a:'Consultar'},
+    {l:'Compra de VH para personas con discapacidad',h:'Para contribuyentes con discapacidad reconocida que adquieran su VH en la CV.',a:'Consultar'},
+    {l:'Cantidades para VH procedentes de ayudas públicas',h:'Por las cantidades recibidas de ayudas públicas destinadas a la adquisición o rehabilitación de tu VH.',a:'Consultar'},
+    {l:'Arrendamiento o cesión en uso de la VH',h:'Por pagar alquiler o cesión en uso de tu VH en la CV.',a:'Consultar'},
+    {l:'Alquiler por traslado laboral a municipio distinto (inquilino)',h:'Si alquilas en un municipio distinto al anterior por motivos laborales (cuenta propia o ajena).',a:'Consultar'},
+    {l:'Autoconsumo: instalación de energía solar o renovable en VH',h:'Por invertir en instalaciones de autoconsumo de energía eléctrica o térmica mediante fuentes renovables en tu VH.',a:'Consultar'},
+    {l:'Obras de conservación/mejora calidad, sostenibilidad y accesibilidad en VH',h:'Por obras de conservación o mejora de la calidad, sostenibilidad y accesibilidad de tu VH realizadas en 2025.',a:'Consultar'},
+    {l:'Obras de conservación/mejora en VH (ejercicios 2014 y 2015 pendientes)',h:'Si tienes pendiente de aplicar una deducción por obras en la VH de 2014 o 2015.',a:'Consultar'},
+    {l:'Subida de costes de financiación de la VH por alza de tipos',h:'Para contribuyentes que hayan soportado un incremento en los costes de financiación de su VH por la subida de tipos de interés.',a:'Consultar'},
+    {l:'Residencia en municipio en riesgo de despoblamiento',h:'Por residir habitualmente en un municipio de la CV en riesgo de despoblamiento.',a:'Consultar'},
+    {l:'Cantidades para paliar daños en la VH por un temporal',h:'Por las cantidades destinadas a reparar los daños materiales sobre tu VH derivados de un temporal.',a:'Consultar'},
+    {l:'Donativos con finalidad ecológica',h:'Por donativos a entidades cuyo fin sea la protección del medio ambiente en la CV.',a:'Consultar'},
+    {l:'Donaciones de bienes del Patrimonio Cultural Valenciano',h:'Por donar bienes del Patrimonio Cultural Valenciano a entidades públicas o sin ánimo de lucro.',a:'Consultar'},
+    {l:'Donativos para el Patrimonio Cultural Valenciano',h:'Por donativos dinerarios para la conservación, reparación y restauración de bienes del Patrimonio Cultural Valenciano.',a:'Consultar'},
+    {l:'Donaciones para el fomento de la Lengua Valenciana',h:'Por donaciones para el fomento y la protección de la lengua valenciana.',a:'Consultar'},
+    {l:'Donaciones para fines culturales, científicos o deportivos (no profesionales)',h:'Por donaciones, cesiones o comodatos para fines culturales, científicos o deportivos no profesionales.',a:'Consultar'},
+    {l:'Donaciones para investigación COVID-19 / gastos COVID',h:'Por donativos para la investigación del COVID-19 o para contribuir a la financiación de gastos de la crisis sanitaria.',a:'Consultar'},
+    {l:'Restauración/conservación de bienes del Patrimonio Cultural Valenciano (propietario)',h:'Por cantidades destinadas por los titulares a la conservación, reparación y restauración de bienes del Patrimonio Cultural Valenciano.',a:'Consultar'},
+    {l:'Material escolar',h:'Por la compra de material escolar para tus hijos en la CV.',a:'Consultar'},
+    {l:'Abonos culturales (teatro, música, museos...)',h:'Por las cantidades destinadas a abonos culturales en la CV.',a:'Consultar'},
+    {l:'Alquiler de VH con renta por debajo del precio de referencia (casero)',h:'Para arrendadores cuya VH se alquila por debajo del precio de referencia de alquileres privados de la CV.',a:'Consultar'},
+    {l:'Cantidades de ayudas por ERTE o reducción de jornada COVID',h:'Por las cantidades recibidas de ayudas públicas del Decreto Ley 3/2020 para trabajadores afectados por ERTE o reducción de jornada COVID.',a:'Consultar'},
+    {l:'Compra de vehículo eléctrico/PHEV (Orden 5/2020)',h:'Por comprar vehículos nuevos de las categorías de la Orden 5/2020 (eléctricos, híbridos enchufables...).',a:'Consultar'},
+    {l:'Business Angel — entidades nuevas valencianas',h:'Por adquirir acciones/participaciones en entidades nuevas con domicilio en la CV.',a:'Consultar'},
+    {l:'Tratamientos de fertilidad en clínicas autorizadas de la CV',h:'Por las cantidades pagadas en tratamientos de fertilidad en clínicas o centros autorizados de la CV.',a:'Consultar'},
+    {l:'Gastos de salud (determinados)',h:'Por determinados gastos de salud del contribuyente en la CV. Condiciones específicas a consultar.',a:'Consultar'},
+    {l:'Práctica del deporte y actividades saludables',h:'Por los gastos en actividades deportivas y saludables del contribuyente o sus hijos.',a:'Consultar'},
+    {l:'Aportaciones a fondos propios de entidades con actividades económicas (CV)',h:'Por las aportaciones a los fondos propios de entidades con actividades económicas en la CV.',a:'Consultar'},
+    {l:'Gastos vinculados con el fomento y formación musicales',h:'Por las cantidades pagadas en gastos relacionados con el fomento y la formación musicales en la CV.',a:'Consultar'},
+  ]},
+  nav: { label:'Navarra (régimen foral)', items:[
+    {l:'⚠️ Navarra tiene su propio IRPF foral — importes distintos al estatal',h:'La Hacienda Foral de Navarra gestiona un IRPF propio con deducciones, tramos y bases diferentes al IRPF estatal. Todas las cifras que ves a continuación son las de Navarra 2025, verificadas en el TRIRPF Navarra.',a:'Régimen foral propio'},
+    {l:'Mínimo Personal (Art. 62.9.a)',h:'1.084€/año por contribuyente. +264€ si tienes 65 o más años. +585€ si tienes 75 o más. +766€ si tienes discapacidad del 33%–64%. +2.757€ si discapacidad ≥65%. +150€ adicionales si tu renta total no supera 30.000€. +668€ si declaras conjuntamente como monoparental con hijos.',a:'1.084€ base + incrementos'},
+    {l:'Descendientes (Art. 62.9.b)',h:'Por cada hijo/a soltero/a menor de 30 años que conviva y dependa económicamente: 483€ 1er hijo / 512€ 2º / 732€ 3º / 981€ 4º / 1.111€ 5º / 1.286€ 6º y ss. +644€ por cada menor de 3 años (o +1.170€ si adopción internacional). +674€ si discapacidad 33-64% / +2.360€ si ≥65%. Si tu renta no supera 30.000€, los importes base pueden aumentar hasta un 40%.',a:'483€–1.286€/hijo + incrementos'},
+    {l:'Ascendientes (Art. 62.9.b)',h:'264€ por cada ascendiente de 65 o más años o con discapacidad que conviva contigo al menos la mitad del año. +585€ si tiene 75 o más años. +674€ si discapacidad 33-64% / +2.360€ si ≥65%. Si varias personas tienen derecho por el mismo ascendiente, la deducción se reparte.',a:'264€ base + incrementos'},
+    {l:'Prestación por Nacimiento/Paternidad (Art. 68 quater)',h:'Deducción que compensa la tributación de la prestación pública por nacimiento y cuidado de menor (en Navarra no está exenta). Si tu renta total ≤30.000€: 25% de la prestación percibida. Si superas 30.000€: porcentaje menor según fórmula legal. Límite: cuantía máxima SS por hijo.',a:'25% de la prestación (renta ≤30.000€)'},
+    {l:'Pensiones alimenticias a hijos (Art. 59.3)',h:'Tratamiento especial de tarifa: las anualidades por alimentos a hijos fijadas judicialmente o en escritura notarial tributan con escala separada al resto de la base. Requiere justificante bancario del pago. No aplica en custodia compartida y tiene límites por hijo.',a:'Tarifa separada — ahorro variable'},
+    {l:'Alquiler de vivienda habitual — General (Art. 62.2)',h:'15% de las cantidades pagadas por el alquiler, máx. 1.500€/año. Sube al 20% (máx. 1.600€) si eres menor de 30 años o familia monoparental. Requisitos: renta total ≤30.000€ y el alquiler debe superar el 10% de esas rentas. Incompatible con ayudas EMANZIPA o DAVID.',a:'15% (20% si <30 años), máx. 1.500–1.600€'},
+    {l:'Alquiler — Programa DAVID / EMANZIPA (Art. 68 quinquies)',h:'Incentivos forales específicos para emancipación y acceso a vivienda. Hasta el 50% de la renta pagada con límites mensuales propios. Edad máxima 34 años en 2025. Incompatible con la deducción general del Art. 62.2. Revisar si estás en programa DAVID, EMANZIPA u otro.',a:'Hasta 50% del alquiler pagado'},
+    {l:'Inversión VH — Régimen Transitorio (Disp. Trans. 15ª)',h:'Solo para quienes compraron o rehabilitaron su VH antes del 01/01/2013. Base máxima simplificada: 7.000€. Se deducen capital amortizado e intereses pagados en 2025 según condiciones históricas. Importante: la fecha exacta de adquisición y el mantenimiento del carácter de VH son determinantes.',a:'% s/7.000€ base máx. — según perfil'},
+    {l:'Gastos por cuidado de personas (Art. 62.9.c)',h:'75% de las cotizaciones a la SS pagadas como empleador/a de hogar para cuidar de: descendientes menores de 16 años, personas con derecho a mínimo familiar, o tú mismo/a si tienes ≥65 años o discapacidad ≥65%. Si varias personas tienen derecho, la deducción se reparte a partes iguales.',a:'75% de las cuotas SS pagadas'},
+    {l:'Donativos — Mecenazgo (DFL 2/2023, Art. 43)',h:'80% de los primeros 250€ donados + 40% del exceso a entidades de mecenazgo. Para otras entidades, depende del régimen legal aplicable — consultar certificado fiscal. Límite global: la suma de esta deducción + cuotas sindicales + partidos + renovables + vehículos no puede superar el 25% de tu base liquidable.',a:'80% hasta 250€, 40% resto'},
+    {l:'Cuotas sindicales (Art. 62.6)',h:'15% de las cuotas pagadas al sindicato, con base máxima de 600€. Conservar justificante o certificado. Computa dentro del límite global del 25% de la base liquidable junto a otras deducciones.',a:'15% s/máx. 600€ base'},
+    {l:'Deducción por trabajo (Art. 62.5)',h:'Deducción en cuota ligada a los rendimientos netos del trabajo, pensiones o desempleo: hasta 10.500€ de rdto. neto → 1.400€. Entre 10.500–17.500€ → reducción gradual. Entre 17.500–35.000€ → 700€. Entre 35.000–50.000€ → reducción gradual. Más de 50.000€ → 400€. Mejora si eres trabajador activo con discapacidad.',a:'400€–1.400€ según rendimiento neto'},
+    {l:'Deducción por pensión de viudedad/jubilación (Art. 68)',h:'Ayuda adicional para determinadas pensiones contributivas de viudedad o jubilación. Referencia vigente Renta 2025: 14.490€ anuales; límite conjunto 28.980€ en supuestos familiares. Incompatible con Renta Garantizada/IMV y otras ayudas. Permite anticipo en algunos supuestos.',a:'Según cálculo — referencia 14.490€'},
+    {l:'Deducción Extraordinaria Mutualistas (Disp. Adic. 70ª)',h:'Para pensionistas cuyas prestaciones derivan de cotizaciones históricas a mutualidades antes de 1979. Corrección del tratamiento fiscal de esas prestaciones. Requiere revisar documentación histórica y periodos cotizados. No es una deducción estándar — requiere revisión profesional.',a:'Variable — revisión profesional'},
+    {l:'Vehículo eléctrico nuevo (Art. 62.13)',h:'30% si es eléctrico / 5% si es híbrido enchufable. Sube al 35%/10% si tu renta (incluidas exentas) ≤30.000€ (o ≤60.000€ en unidad familiar). Base máxima para M1/N1: 35.000€. Las subvenciones exentas recibidas se restan de la base antes de calcular. Si compraste con leasing o multiopción, revisar disposición adicional 54.',a:'30–35% eléctrico / 5–10% híbrido'},
+    {l:'Instalación punto de recarga eléctrica (Art. 62.14)',h:'15% general. 17% si la potencia está entre 7,4 kW y 22 kW. 20% si supera 22 kW. Bases máximas: 5.000€ potencia normal / 25.000€ alta potencia hasta 50 kW / 200.000€ si >50 kW. Requiere informe del órgano competente en energía. Las subvenciones exentas se restan de la base.',a:'15–20% según potencia'},
+    {l:'Renovables para autoconsumo (Art. 62.12)',h:'15% de la inversión deducible como base. Puede subir hasta el 30% si: generación sin emisiones, incluye almacenamiento, hay autoconsumo compartido/comunidad energética, lo realiza una comunidad de vecinos, o determinados usos térmicos de calefacción/ACS. Requiere facturas, pagos trazables e informe técnico. Las instalaciones obligatorias por el Código Técnico no son deducibles (salvo exceso).',a:'15–30% según tipo de instalación'},
+    {l:'Obras de eficiencia energética (Disp. Adic. 65ª)',h:'60% de la base deducible para cantidades pagadas en 2025. Base anual máxima: 5.000€. Base acumulada máxima: 15.000€ entre este ejercicio y los 4 siguientes. Requiere certificados energéticos antes y después de la obra, facturas y pagos trazables. Las subvenciones exentas se restan de la base.',a:'60% s/máx. 5.000€/año'},
+    {l:'Planes de pensiones / Previsión Social (Art. 55.1)',h:'REDUCCIÓN EN BASE (no en cuota). Límite general: 1.500€/año o el % correspondiente de tus rdtos. netos del trabajo y AE (el menor de los dos). Hasta 8.500€ adicionales por contribuciones empresariales en sistemas de empleo. En ciertos seguros colectivos el límite adicional queda en 4.250€. Autónomos: existen reglas específicas para sistemas sectoriales o de empleo.',a:'Máx. 1.500€ (+ hasta 8.500€ empresa)'},
+    {l:'Reducciones para arrendadores (Art. 25.2)',h:'Reducción sobre el rendimiento neto del alquiler (no sobre el ingreso bruto): 70% si el alquiler está intermediado por NASUVINSA. 90% si además está en zona de mercado tensionado. 50% si es arrendamiento de vivienda permanente (Art. 2 LAU) en zona tensionada. El antiguo 40% ya no es la referencia general desde 2025. Requiere contrato inscrito a fecha de devengo.',a:'50–90% del rdto. neto (según caso)'},
+  ]},
+  pv: { label:'País Vasco', items:[
+    {l:'⚠️ RÉGIMEN FORAL DEL PAÍS VASCO',h:'El País Vasco tiene su propio IRPF gestionado por las Haciendas Forales de Álava, Bizkaia y Gipuzkoa. Las reglas son muy diferentes al IRPF estatal. Este formulario no cubre las especificidades de los territorios históricos vascos. Comunícalo al despacho.',a:'Consultar Hacienda Foral'},
+  ]},
+};
+
+function cambiarCCAA() {
+  const v = document.getElementById('ccaa').value;
+  const badge = document.getElementById('ccaa-badge');
+  const cont = document.getElementById('daut-content');
+  if (!v || !CCAA[v]) {
+    badge.textContent = 'Selecciona tu CCAA arriba';
+    cont.innerHTML = '<div class="ccaa-placeholder">👆 Selecciona tu comunidad autónoma en el selector de arriba para ver todas las deducciones aplicables a tu caso.</div>';
+    return;
+  }
+  const d = CCAA[v];
+  badge.textContent = d.label;
+  let html = '<div class="cg">';
+  d.items.forEach(item => {
+    html += `<div class="ci" onclick="togC(this)"><div class="ci-check"></div><div class="ci-text"><label>${item.l}</label><div class="hint">${item.h}</div>${item.a ? `<div class="amount">${item.a}</div>` : ''}</div></div>`;
+  });
+  html += '</div>';
+  cont.innerHTML = html;
+  updProg();
+}
+
+function tog(id) {
+  const body = document.getElementById('body-' + id);
+  const hdr = body.previousElementSibling;
+  hdr.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+function togC(el) {
+  el.classList.toggle('checked');
+  updProg();
+}
+
+function selR(gid, el) {
+  document.getElementById(gid).querySelectorAll('.ri').forEach(r => r.classList.remove('sel'));
+  el.classList.add('sel');
+  updProg();
+}
+
+function updProg() {
+  const cbs = document.querySelectorAll('.ci');
+  const checked = [...cbs].filter(el => el.classList.contains('checked')).length;
+  const inps = document.querySelectorAll('input[type=text],input[type=number],textarea');
+  const filled = [...inps].filter(i => i.value && i.value.trim()).length;
+  const total = cbs.length * 2 + inps.length;
+  const pct = total > 0 ? Math.min(Math.round(((checked * 2 + filled) / total) * 100), 100) : 0;
+  document.getElementById('prog').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = pct + '% completado';
+}
+
+const SEC_LABELS = {
+  personal:'Datos personales', trab:'Rendimientos del trabajo', ae:'Actividades económicas',
+  ci:'Capital inmobiliario', cm:'Capital mobiliario', gp:'Ganancias patrimoniales',
+  red:'Reducciones de base', dest:'Deducciones estatales', daut:'Deducciones autonómicas',
+  emp:'Situación empresarial', ret:'Retenciones y pagos', doc:'Documentación'
+};
+
+function verResumen() {
+  const box = document.getElementById('sum-box');
+  box.style.display = 'block';
+  const nombre = document.getElementById('nombre').value || '(sin nombre)';
+  const nif = document.getElementById('nif').value || '(sin NIF)';
+  const ccaaEl = document.getElementById('ccaa');
+  const ccaaTxt = ccaaEl.options[ccaaEl.selectedIndex].text || '—';
+  let html = `<div class="sum-sec"><h3>Cliente</h3><div class="sum-item"><strong>${nombre}</strong> &nbsp;·&nbsp; ${nif} &nbsp;·&nbsp; CCAA: ${ccaaTxt}</div></div>`;
+  Object.keys(SEC_LABELS).forEach(id => {
+    const body = document.getElementById('body-' + id);
+    if (!body) return;
+    const checked = [...body.querySelectorAll('.ci')].filter(el => el.classList.contains('checked'));
+    if (!checked.length) return;
+    html += `<div class="sum-sec"><h3>${SEC_LABELS[id]}</h3>`;
+    checked.forEach(cb => {
+      const lbl = cb.querySelector('label').textContent;
+      const amt = cb.querySelector('.amount');
+      html += `<div class="sum-item">✔ ${lbl}${amt ? ' <em style="color:#1a5c1a;font-size:12px"> — ' + amt.textContent + '</em>' : ''}</div>`;
+    });
+    html += '</div>';
+  });
+  if (html.split('sum-sec').length < 3) html += '<p style="color:#888;font-size:13px">No se ha marcado ninguna opción todavía.</p>';
+  document.getElementById('sum-content').innerHTML = html;
+  document.getElementById('sum-date').textContent = new Date().toLocaleString('es-ES');
+  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function limpiar() {
+  if (!confirm('¿Borrar todos los datos del formulario?')) return;
+  document.querySelectorAll('.ci').forEach(el => el.classList.remove('checked'));
+  document.querySelectorAll('.ri').forEach(r => r.classList.remove('sel'));
+  document.querySelectorAll('input[type=text],input[type=number],textarea').forEach(i => { if (i.defaultValue !== undefined) i.value = i.defaultValue; else i.value = ''; });
+  document.getElementById('sum-box').style.display = 'none';
+  document.getElementById('ccaa').value = '';
+  cambiarCCAA();
+  updProg();
+}
+updProg();
+</script>
+</body>
+</html>
